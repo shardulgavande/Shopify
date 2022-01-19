@@ -1,0 +1,27 @@
+<!--<div class="container">
+    <div class="row">
+        <li class="col" *ngFor="let product of products">
+            {{product.id}}
+            {{product.name}}
+            {{product.price}}
+            {{product.description}}
+            {{product.image}}
+            {{product.quantity}}
+            {{product.category}}
+        </li>
+    </div>
+</div> -->
+
+
+<div class="container" style="padding-top: 30px;">
+    <div class="row">
+        <ng-container *ngFor="let product of products">
+        <div class="col-md-3">
+            <img src="{{product.image}}" alt="" style="width: 100%;">
+            <h5>{{product.name}}</h5>
+            <p>₹{{product.price}}</p>   
+            <button class="btn btn-primary">Add to Cart</button>
+        </div>
+    </ng-container>
+    </div>
+</div>
