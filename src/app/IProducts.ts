@@ -1,9 +1,9 @@
 export interface IProducts{
-    id: number,
-    name: string,
-    price: number,
-    description: string,
-    image: string,
-    quantity: number,
-    category: string
+   
+    pname: string,
+    pprice: number,
+    pdesc: string,
+    pimage: string,
+    pquantity: number,
+    subcat_id: number
 }

@@ -12,14 +12,14 @@
     </div>
 </div> -->
 
-
+<app-header></app-header>
 <div class="container" style="padding-top: 30px;">
     <div class="row">
         <ng-container *ngFor="let product of products">
         <div class="col-md-3">
-            <img src="{{product.image}}" alt="" style="width: 100%;">
-            <h5>{{product.name}}</h5>
-            <p>₹{{product.price}}</p>   
+            <img src="{{product.pimage}}" alt="" style="width: 100%;">
+            <h5>{{product.pname}}</h5>
+            <p>₹{{product.pprice}}</p>   
             <button class="btn btn-primary">Add to Cart</button>
         </div>
     </ng-container>

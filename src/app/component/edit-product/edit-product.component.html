@@ -1,0 +1,51 @@
+<app-dashboard></app-dashboard>
+<h2 style="text-align: center;">Edit Product</h2>
+
+<div class="container"  style="padding-top: 30px;">
+    <div class="row">
+        <div class="col-md-6">
+            <p>Enter Product Name</p>
+        </div>
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="pname" name="pname" placeholder="Enter product name"
+            [(ngModel)]="product.pname">
+        </div>
+        <div class="col-md-6">
+            <p>Enter Product Price</p>
+        </div>
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="pprice" name="pprice" placeholder="Enter product price"
+            [(ngModel)]="product.pprice">
+        </div>
+        <div class="col-md-6">
+            <p>Enter Product Description</p>
+        </div>
+        <div class="col-md-6">
+            <textarea class="form-control rounded-0" id="pdesc" name="pdesc" placeholder="Enter product description" rows="3"
+            [(ngModel)]="product.pdesc"></textarea>
+        </div>
+        <div class="col-md-6">
+            <p>Enter Product Image</p>
+        </div>
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="pimage" name="pimage" placeholder="Enter product quantity"
+            [(ngModel)]="product.pimage">
+           
+        </div>
+        <!--<div class="col-md-6">
+            <img [src]="url" height="200">
+            <input type="file" class="form-control" (change)="onselectFile($event)" id="pimage" name="pimage" placeholder="Enter product image"
+            [(ngModel)]="product.pimage">
+        </div> -->
+        <div class="col-md-6">
+            <p>Enter Product Quantity</p>
+        </div>
+       <div class="col-md-6">
+            <input type="text" class="form-control" id="pquantity" name="pquantity" placeholder="Enter product quantity"
+            [(ngModel)]="product.pquantity">
+           
+        </div>
+        
+    </div>
+  <!--  <button class="btn btn-primary" (click)="addProducts()" style="margin-left: 52%;">Update</button> -->
+</div>

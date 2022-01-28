@@ -6,7 +6,7 @@ module.exports = {
 
       {
         pname: "Mens Casual Premium Slim Fit T-Shirt",
-        pprice: 109.5,
+        pprice: 109,
         pdesc:"Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing.",
         pimage:"https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
         pquantity:"5",
