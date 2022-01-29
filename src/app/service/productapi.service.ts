@@ -27,7 +27,15 @@ export class ProductapiService {
     return this.httpClient.post(this.base_url+"/app/products/add",data,this.http_option);
   }
 
-  get(id:any): Observable<any> {
+  get(id:number): Observable<any> {
     return this.httpClient.get(`${this.base_url+"/app/products/"}${id}`);
+  }
+
+  update(id:number,data:any):Observable<any>{
+    return this.httpClient.put(`${this.base_url+"/app/products/update/"}${id}`,data);
+  }
+
+  delete(id:number):Observable<any>{
+    return this.httpClient.delete(`${this.base_url+"/app/products/delete/"}${id}`);
   }
 }

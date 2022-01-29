@@ -42,9 +42,11 @@ exports.createProducts=(req,resp)=>{
 
 exports.updateProducts=(req,resp)=>{
     const pid = parseInt(req.params.id);
+    console.log('body');
+    console.log(req.body);
     Products.update(req.body,{ where:{ id:pid }})
         .then(num => {
-            console.log('num' +num);
+            console.log('num ' +num);
             if(num == 1){
                 resp.send({message:`Product with id ${pid} updated sucessfully`});
             }

@@ -22,8 +22,9 @@
         <td>{{product.pimage}}</td>
         <td>{{product.pquantity}}</td>
         <td>{{product.subcat_id}}</td>
-        <td><button type="button" class="btn btn-primary" routerLink="/dashboard/product/edit/{{product.id}}">Edit</button></td>
-        <td><button type="button" class="btn btn-danger">Delete</button></td>
+        <td><button type="button" class="btn btn-primary" routerLink="/dashboard/products/edit/{{product.id}}">Edit</button></td>
+        <!-- <td><button type="button" class="btn btn-danger" routerLink="/dashboard/products/delete/{{product.id}}">Delete</button></td> -->
+        <td><button type="button" class="btn btn-danger" (click)="deleteProducts(product.id)">Delete</button></td>
       </tr>
       </tbody>
   </table>

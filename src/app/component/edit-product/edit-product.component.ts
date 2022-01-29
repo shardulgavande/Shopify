@@ -8,9 +8,17 @@ import { ProductapiService } from 'src/app/service/productapi.service';
   styleUrls: ['./edit-product.component.css']
 })
 export class EditProductComponent implements OnInit {
-
-    product:any;
-    
+  
+  product:any;
+  /* productI = {
+    id: '',
+    pname: '',
+    pprice: 1,
+    pdesc: '',
+    pimage: '',
+    pquantity: 1,
+    subcat_id: 1
+  }; */
 
   constructor(
     private productService:ProductapiService,
@@ -19,7 +27,7 @@ export class EditProductComponent implements OnInit {
     { }
 
   ngOnInit(): void {
-    this.getProducts(this.route.snapshot.paramMap.get('id'));
+   this.getProducts(this.route.snapshot.paramMap.get('id'));
   }
 
   getProducts(id:any):void{
@@ -34,4 +42,25 @@ export class EditProductComponent implements OnInit {
         });
   }
 
+  updateProducts():void {
+    const data = {
+      id: this.product.id,
+      pname: this.product.pname,
+      pprice: this.product.pprice,
+      pdesc: this.product.pdesc,
+      pimage: this.product.pimage,
+      pquantity: this.product.pquantity,
+      subcat_id: 1
+    }; 
+    this.productService.update(this.product.id, data)
+    .subscribe(
+      response => {
+        console.log(response);
+        alert("Data updated sucessfully");
+        //this.submitted = true;
+      },
+      error => {
+        console.log(error);
+      });
+  }
 }

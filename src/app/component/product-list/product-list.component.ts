@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IProducts } from 'src/app/IProducts';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductapiService } from 'src/app/service/productapi.service';
 
 @Component({
@@ -13,7 +13,9 @@ export class ProductListComponent implements OnInit {
 
   products:any;
 
-  constructor(private productapi:ProductapiService) { }
+  constructor(private productapi:ProductapiService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getproducts();
@@ -23,4 +25,20 @@ export class ProductListComponent implements OnInit {
     this.productapi.getProducts().subscribe(allProducts=>this.products=allProducts);
   }
 
+  deleteProducts(id:any):void {
+  //  console.log(this.products.id);
+    this.productapi.delete(id)
+      .subscribe(
+        response => {
+          console.log(response);
+          alert("Data deleted sucessfully");
+          this.router.navigate(['/dashboard/products/list'])
+            .then(() => {
+            window.location.reload();
+          });
+        },
+        error => {
+          console.log(error);
+        });
+  }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductapiService } from 'src/app/service/productapi.service';
-import { IProducts } from 'src/app/IProducts';
+//import { IProducts } from 'src/app/IProducts';
 
 
 @Component({
@@ -11,8 +11,6 @@ import { IProducts } from 'src/app/IProducts';
 export class AddProductComponent implements OnInit {
 
   product = {
-    
-    
     pname: '',
     pprice: 1,
     pdesc: '',
@@ -40,7 +38,7 @@ export class AddProductComponent implements OnInit {
     }
 
   addProducts(): void {
-      const data:IProducts = {
+      const data:any = {
 
       pname: this.product.pname,
       pprice: this.product.pprice,
