@@ -13,6 +13,11 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductListComponent } from './component/product-list/product-list.component';
 import { EditProductComponent } from './component/edit-product/edit-product.component';
+import { LoginComponent } from './component/user/login/login.component';
+import { RegistrationComponent } from './component/user/registration/registration.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AdminLoginComponent } from './component/admin/admin-login/admin-login.component';
+import { AdminRegistrationComponent } from './component/admin/admin-registration/admin-registration.component';
 
 
 
@@ -27,13 +32,18 @@ import { EditProductComponent } from './component/edit-product/edit-product.comp
     DashboardComponent,
     ProductListComponent,
     EditProductComponent,
-    
+    LoginComponent,
+    RegistrationComponent,
+    AdminLoginComponent,
+    AdminRegistrationComponent,
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
   ],
   providers: [],
