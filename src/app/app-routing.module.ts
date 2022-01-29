@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddProductComponent } from './component/add-product/add-product.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { EditProductComponent } from './component/edit-product/edit-product.component';
+import { PaymentComponent } from './component/payment/payment.component';
 import { ProductListComponent } from './component/product-list/product-list.component';
 import { ProductComponent } from './component/product/product.component';
 import { LoginComponent } from './component/user/login/login.component';
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'dashboard/products/edit/:id', component: EditProductComponent},
   //{path: 'dashboard/products/delete/:id', component: ProductListComponent}
   {path:'login', component:LoginComponent},
-  {path:'register' , component:RegistrationComponent}
+  {path:'register' , component:RegistrationComponent},
+  {path:'payment' , component:PaymentComponent}
 ];
 
 @NgModule({
