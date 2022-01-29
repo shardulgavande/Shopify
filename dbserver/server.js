@@ -1,24 +1,22 @@
-const express = require('express');
-const server = express();
-const port = 3000;
-const cors = require('cors');
-//const res = require('express/lib/response');
-const CORS_OPTIONS = {origin:"http://localhost:4200"};
-
-server.use(express.json());
-server.use(express.urlencoded({extended:true}));
+const express=require('express');
+const server=express();
+const port=3000;
+const cors=require('cors');
+const CORS_OPTIONS={origin:"http://localhost:4200"};
+server.use(express.json())
+server.use(express.urlencoded({extended:true}))
 server.use(cors(CORS_OPTIONS));
-//Synching with server
-const db = require('./models');
+const db=require('./db/models');
 db.sequelize.sync();
 
-require('../app/app-route')(server);
+//App Url "http://localhost:3000/app"
 
-server.get('/',(req,res)=>{
-    res.send({message:"Welcome to express postgre"});
+require('./app/app-route')(server);
+
+//Main Url "http://localhost:3000/app"
+server.get('/',(req,resp)=>{
+    resp.send({message:"Welcome to express + postgre+ node"})
 })
-
-
 server.listen(port,()=>{
 
     console.log(`http://localhost:${port} started`);
