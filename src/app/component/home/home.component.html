@@ -36,7 +36,7 @@
   <div class="row">
       <ng-container *ngFor="let product of products">
       <div class="col-md-3">
-          <img src="{{product.pimage}}" alt="" style="width: 100%;">
+          <img src="{{product.pimage}}" alt="" style="width: 270px; height: 350px;">
           <h5>{{product.pname}}</h5>
           <p>₹{{product.pprice}}</p>
           <button class="btn btn-primary" (click)=addtocart(product) >Add to Cart</button>

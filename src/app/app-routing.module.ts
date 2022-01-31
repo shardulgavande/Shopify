@@ -13,11 +13,11 @@ import { AdminRegistrationComponent } from './component/admin/admin-registration
 import { HomeComponent } from './component/home/home.component';
 import { CartComponent } from './component/cart/cart.component';
 import { AuthGuard } from './shared/auth.guard';
-import { PaymentComponent } from './component/payment/payment.component';
+
 
 const routes: Routes = [
   {path: '',redirectTo:'product', pathMatch:'full'},
-  {path: 'product', component:ProductComponent},
+  {path: '', component:ProductComponent},
   {path: 'dashboard/products/add', component: AddProductComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'dashboard/products/list', component: ProductListComponent},

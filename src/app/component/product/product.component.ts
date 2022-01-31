@@ -14,6 +14,7 @@ export class ProductComponent implements OnInit {
 
   // products:any;
   public productList: any;
+  router: any;
 
   constructor(private productapi:ProductapiService,private cartService:CartService) { }
 
@@ -37,6 +38,11 @@ export class ProductComponent implements OnInit {
   addtocart(product:any){
     this.cartService.addtoCart(product);
 
+  }
+
+  prod(){
+
+    alert("Please login");
   }
 
 }

@@ -11,6 +11,7 @@ export class PaymentComponent implements OnInit {
 
   public products : any=[];
   public grandTotal !: number;
+  totalItem: any;
 
   constructor(private cartService:CartService,private router:Router) { }
 
@@ -20,6 +21,17 @@ export class PaymentComponent implements OnInit {
       this.products = res;
       this.grandTotal= this.cartService.getTotalPrice();
     })
+
+    this.cartService.getProducts().subscribe(res=>{
+      this.totalItem= res.length;
+    })
+  }
+
+  logout(){
+    localStorage.removeItem('token');
+    this.cartService.removeAllCart();
+    this.router.navigateByUrl('/login');
+
   }
 
 }
