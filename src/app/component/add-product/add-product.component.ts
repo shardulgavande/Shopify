@@ -25,14 +25,18 @@ export class AddProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
-    url = "./assets";
+    imgurl = "../../assets/";
+    imgpath = '';
 
     onselectFile(e:any){
       if(e.target.files){
         var reader = new FileReader();
         reader.readAsDataURL(e.target.files[0]);
+        console.log(e.target.files[0]['name']);
         reader.onload=(event:any)=>{
-          this.url = event.target.result;
+          this.imgurl = event.target.result;
+          this.imgpath = "../../assets/" + e.target.files[0]['name'];
+          console.log(this.imgpath);
         }
       }
     }
