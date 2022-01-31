@@ -19,8 +19,8 @@
         <div class="col-md-3">
             <img src="{{product.pimage}}" alt="" style="width: 100%;">
             <h5>{{product.pname}}</h5>
-            <p>₹{{product.pprice}}</p>   
-            <button class="btn btn-primary">Add to Cart</button>
+            <p>₹{{product.pprice}}</p>
+            <button class="btn btn-primary" (click)=addtocart(product) >Add to Cart</button>
         </div>
     </ng-container>
     </div>

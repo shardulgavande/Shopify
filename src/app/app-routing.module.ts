@@ -8,6 +8,10 @@ import { ProductListComponent } from './component/product-list/product-list.comp
 import { ProductComponent } from './component/product/product.component';
 import { LoginComponent } from './component/user/login/login.component';
 import { RegistrationComponent } from './component/user/registration/registration.component';
+import { AdminLoginComponent } from './component/admin/admin-login/admin-login.component';
+import { AdminRegistrationComponent } from './component/admin/admin-registration/admin-registration.component';
+import { HomeComponent } from './component/home/home.component';
+import { CartComponent } from './component/cart/cart.component';
 
 const routes: Routes = [
   {path: '', component: ProductComponent},
@@ -18,7 +22,12 @@ const routes: Routes = [
   //{path: 'dashboard/products/delete/:id', component: ProductListComponent}
   {path:'login', component:LoginComponent},
   {path:'register' , component:RegistrationComponent},
-  {path:'payment' , component:PaymentComponent}
+  {path:'payment' , component:PaymentComponent},
+  {path:'adminregister' , component:AdminRegistrationComponent},
+  {path:'adminlogin' , component:AdminLoginComponent},
+  {path:'home' , component:HomeComponent},
+  {path:'users/cart' , component:CartComponent}
+
 ];
 
 @NgModule({
