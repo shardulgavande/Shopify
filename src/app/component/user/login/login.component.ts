@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       if(user){
         alert("Login Success");
         this.form.reset;
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/home');
       }else{
         alert("Invalid credentials");
       }

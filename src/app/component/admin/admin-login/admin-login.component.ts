@@ -19,7 +19,8 @@ export class AdminLoginComponent implements OnInit {
 
   btnDisabled = false;
 
-  constructor(private formbuilder:FormBuilder,private http: HttpClient) { }
+  constructor(private formbuilder:FormBuilder,private http: HttpClient,
+    private router:Router,public adminService: AdminService) { }
 
   ngOnInit(): void {
     this.form = this.formbuilder.group({
@@ -35,5 +36,21 @@ export class AdminLoginComponent implements OnInit {
     //       return a.emailId === this.form.value.emailId && a.password === this.form.value.password
     //     });
   }
+  login(){
+    this.adminService.getAdmins().subscribe(res => {
+      const user=res.find((a:any)=> {
+        return a.emailId === this.form.value.emailId && a.password === this.form.value.password
+      });
 
+      if(user){
+        alert("Login Success");
+        this.form.reset;
+        this.router.navigateByUrl('/dashboard');
+      }else{
+        alert("Invalid credentials");
+      }
+    },err=>{
+      alert("Something went wrong!!");
+    })
+  }
 }
