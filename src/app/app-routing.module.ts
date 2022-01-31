@@ -14,7 +14,8 @@ import { HomeComponent } from './component/home/home.component';
 import { CartComponent } from './component/cart/cart.component';
 
 const routes: Routes = [
-  {path: '', component: ProductComponent},
+  {path: '',redirectTo:'product', pathMatch:'full'},
+  {path: 'product', component:ProductComponent},
   {path: 'dashboard/products/add', component: AddProductComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'dashboard/products/list', component: ProductListComponent},

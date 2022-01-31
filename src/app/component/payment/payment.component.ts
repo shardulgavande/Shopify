@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentComponent implements OnInit {
 
+  public products : any=[];
+
   constructor() { }
 
   ngOnInit(): void {
