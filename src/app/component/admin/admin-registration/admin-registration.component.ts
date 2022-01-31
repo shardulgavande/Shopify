@@ -38,10 +38,11 @@ get f(){
   }
 
   submit(){
-    alert('Admin created successfully!');
+
     console.log(this.form.value);
     this.adminService.create(this.form.value).subscribe((res:any) => {
          console.log('Admin created successfully!');
+         alert('Admin created successfully!');
          this.router.navigateByUrl('/adminlogin');
     })
   }

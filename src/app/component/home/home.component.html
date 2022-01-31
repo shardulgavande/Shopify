@@ -22,10 +22,27 @@
         </form>
 
       <button type="button" class="btn btn-primary btn-sm" routerLink="/edit" style="margin-right: 10px;">Edit</button>
-      <button type="button" class="btn btn-primary btn-sm" routerLink="#">Logout</button>
+      <button type="button" (click)="logout()" class="btn btn-primary btn-sm" routerLink="#">Logout</button>
+      <button class="byn btn-primary" routerLink="/users/cart" style="margin-left: 10px; height: 35px; width: 50px;">
+
+        <i style="font-size:30px;" class="fas fa-cart-plus"></i>
+      <div style="font-size:10px;" class="badge bg-danger">{{totalItem}}</div>
+        </button>
       <!-- <button type="button" class="btn btn-primary btn-sm" routerLink="/adminlogin" style="margin-right: 10px;">AdminLogIn</button> -->
     </div>
   </div>
 </nav>
+<div class="container" style="padding-top: 30px;">
+  <div class="row">
+      <ng-container *ngFor="let product of products">
+      <div class="col-md-3">
+          <img src="{{product.pimage}}" alt="" style="width: 100%;">
+          <h5>{{product.pname}}</h5>
+          <p>₹{{product.pprice}}</p>
+          <button class="btn btn-primary" (click)=addtocart(product) >Add to Cart</button>
+      </div>
+  </ng-container>
+  </div>
+</div>
 
 

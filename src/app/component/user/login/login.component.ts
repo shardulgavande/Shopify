@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
 
       if(user){
         alert("Login Success");
+        localStorage.setItem('token',"dfdfdtrtdry.drddhfdhdyrdt.drftftfytfy");
         this.form.reset;
         this.router.navigateByUrl('/home');
       }else{

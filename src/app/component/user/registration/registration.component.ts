@@ -39,10 +39,11 @@ export class RegistrationComponent implements OnInit {
   }
 
   submit(){
-    alert('User created successfully!');
+
     console.log(this.form.value);
     this.userService.create(this.form.value).subscribe((res:any) => {
          console.log('User created successfully!');
+         alert('User created successfully!');
          this.router.navigateByUrl('/login');
     })
   }

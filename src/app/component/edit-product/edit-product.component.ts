@@ -8,7 +8,7 @@ import { ProductapiService } from 'src/app/service/productapi.service';
   styleUrls: ['./edit-product.component.css']
 })
 export class EditProductComponent implements OnInit {
-  
+
   product:any;
   /* productI = {
     id: '',
@@ -51,7 +51,7 @@ export class EditProductComponent implements OnInit {
       pimage: this.product.pimage,
       pquantity: this.product.pquantity,
       subcat_id: 1
-    }; 
+    };
     this.productService.update(this.product.id, data)
     .subscribe(
       response => {

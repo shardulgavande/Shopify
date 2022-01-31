@@ -9,6 +9,8 @@ import { CartService } from 'src/app/service/cart.service';
 })
 export class CartComponent implements OnInit {
 
+  public totalItem:number=0;
+
   public products : any=[];
   public grandTotal !: number;
 
@@ -19,6 +21,12 @@ export class CartComponent implements OnInit {
       this.products = res;
       this.grandTotal= this.cartService.getTotalPrice();
     })
+
+    this.cartService.getProducts().subscribe(res=>{
+      this.totalItem= res.length;
+    })
+
+
   }
 
   removeItem(product:any){
@@ -28,5 +36,13 @@ export class CartComponent implements OnInit {
   emptycart(){
     this.cartService.removeAllCart();
   }
+
+  logout(){
+    localStorage.removeItem('token');
+    this.cartService.removeAllCart();
+    this.router.navigateByUrl('/login');
+
+  }
+
 
 }

@@ -1,4 +1,37 @@
-<app-header></app-header>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <a class="navbar-brand" >SHOPIFY</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#" style="color: black;">Home</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="/men" style="color: black;">Men</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/women" style="color: black;">Women</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search for products" aria-label="Search">
+          <button class="btn btn-outline-primary" type="submit" style="margin-right: 5px;">Search</button>
+        </form>
+
+      <button type="button" class="btn btn-primary btn-sm" routerLink="/edit" style="margin-right: 10px;">Edit</button>
+      <button type="button" (click)="logout()" class="btn btn-primary btn-sm" routerLink="#">Logout</button>
+      <button class="byn btn-primary" routerLink="/users/cart" style="margin-left: 10px; height: 35px; width: 50px;">
+
+        <i style="font-size:30px;" class="fas fa-cart-plus"></i>
+      <div style="font-size:10px;" class="badge bg-danger">{{totalItem}}</div>
+        </button>
+      <!-- <button type="button" class="btn btn-primary btn-sm" routerLink="/adminlogin" style="margin-right: 10px;">AdminLogIn</button> -->
+    </div>
+  </div>
+</nav>
 <ng-container *ngIf = "products.length !=0">
   <div class="container">
     <div class="card-table">
@@ -30,7 +63,7 @@
             <td colspan="4"></td>
             <td><button (click)="emptycart()" class="btn btn-danger">Empty Cart</button></td>
             <td><button routerLink="/products" class="btn btn-primary">Shop More</button></td>
-            <td><button class="btn btn-success">Checkout</button></td>
+            <td><button class="btn btn-success" routerLink="/payment">Checkout</button></td>
             <td><strong>Grand Total : ${{grandTotal}}</strong></td>
         </tr>
 </tbody>

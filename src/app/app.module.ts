@@ -19,6 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AdminLoginComponent } from './component/admin/admin-login/admin-login.component';
 import { AdminRegistrationComponent } from './component/admin/admin-registration/admin-registration.component';
 import { HomeComponent } from './component/home/home.component';
+import { PaymentComponent } from './component/payment/payment.component';
+
 
 
 
@@ -38,6 +40,8 @@ import { HomeComponent } from './component/home/home.component';
     AdminLoginComponent,
     AdminRegistrationComponent,
     HomeComponent,
+    PaymentComponent,
+
 
   ],
   imports: [

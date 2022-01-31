@@ -11,6 +11,8 @@ import { AdminLoginComponent } from './component/admin/admin-login/admin-login.c
 import { AdminRegistrationComponent } from './component/admin/admin-registration/admin-registration.component';
 import { HomeComponent } from './component/home/home.component';
 import { CartComponent } from './component/cart/cart.component';
+import { AuthGuard } from './shared/auth.guard';
+import { PaymentComponent } from './component/payment/payment.component';
 
 const routes: Routes = [
   {path: '', component: ProductComponent},
@@ -23,8 +25,9 @@ const routes: Routes = [
   {path:'register' , component:RegistrationComponent},
   {path:'adminregister' , component:AdminRegistrationComponent},
   {path:'adminlogin' , component:AdminLoginComponent},
-  {path:'home' , component:HomeComponent},
-  {path:'users/cart' , component:CartComponent}
+  {path:'home' , component:HomeComponent,canActivate:[AuthGuard]},
+  {path:'users/cart' , component:CartComponent,canActivate:[AuthGuard]},
+  {path:'payment' , component:PaymentComponent,canActivate:[AuthGuard]}
 
 ];
 

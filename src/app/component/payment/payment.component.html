@@ -1,0 +1,35 @@
+<app-home></app-home>
+<ng-container *ngIf = "products.length !=0">
+  <div class="container">
+    <div class="card-table">
+      <div class="cart-product">
+        <table class="table table-responsive">
+                <thead>
+                <tr>
+                <th>Item No.</th>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Product Description</th>
+                <th>Product Image</th>
+                <th>Product Quantity</th>
+                <th>Product Total</th>
+                </tr>
+                </thead>
+        <tbody>
+        <tr *ngFor="let product of products; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{product.pname}}</td>
+                <td>{{product.pprice}}</td>
+                <td>{{product.pdesc}}</td>
+                <td>{{product.pimage}}</td>
+                <td>{{product.pquantity}}</td>
+                <td>{{product.total}}</td>
+
+          </tr>
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</ng-container>
