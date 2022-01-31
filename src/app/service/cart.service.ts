@@ -22,17 +22,18 @@ export class CartService {
   }
 
   addtoCart(product:any){
+    
     this.cartItemList.push(product);
     this.productList.next(this.cartItemList);
     this.getTotalPrice();
     console.log(this.cartItemList);
   }
 
-  getTotalPrice() : number{
+  getTotalPrice():number{
     let grandTotal=0;
     this.cartItemList.map((a:any)=>{
-      grandTotal+=a.total;
-    })
+     grandTotal+=a.pprice;
+    });
     return grandTotal;
   }
 

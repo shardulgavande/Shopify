@@ -40,7 +40,6 @@ import { FooterComponent } from './component/footer/footer.component';
     AdminRegistrationComponent,
     PaymentComponent,
     FooterComponent,
-
   ],
   imports: [
     BrowserModule,

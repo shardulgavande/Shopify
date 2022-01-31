@@ -1,15 +1,19 @@
 
 <app-dashboard></app-dashboard>
 <h2 style="text-align: center;">Add Products</h2><br>
-<div class="container"  style="padding-top: 30px;">
-    <div class="row">
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-lg-4 offset-lg-4">
+        <form>
+        <div class="form-group">
         <div class="col-md-6">
-            <p>Enter Product Name</p>
+            <label class="form-control-label">Enter Product Name</label>
+            <input type="text" class="form-control" id="pname" name="pname" placeholder="Enter product name" 
+            [(ngModel)]="product.pname" required>
         </div>
-        <div class="col-md-6">
-            <input type="text" class="form-control" id="pname" name="pname" placeholder="Enter product name"
-            [(ngModel)]="product.pname">
-        </div>
+       
+    </div>
+    <div class="form-group">
         <div class="col-md-6">
             <p>Enter Product Price</p>
         </div>
@@ -17,30 +21,34 @@
             <input type="text" class="form-control" id="pprice" name="pprice" placeholder="Enter product price"
             [(ngModel)]="product.pprice">
         </div>
-
+    </div>
+    <div class="form-group">
         <div class="col-md-6">
             <p>Enter Product Description</p>
         </div>
         <div class="col-md-6">
+            
             <textarea class="form-control rounded-0" id="pdesc" name="pdesc" placeholder="Enter product description" rows="3"
-            [(ngModel)]="product.pdesc"></textarea>
+            [(ngModel)]="product.pdesc" maxlength="300"></textarea>
         </div>
-
-  
+    </div>
+    <div class="form-group">
         <div class="col-md-6">
             <p>Enter Product Image</p>
         </div>
         <div class="col-md-6">
-            <input type="text" class="form-control" id="pimage" name="pimage" placeholder="Enter product price"
+            <input type="text" class="form-control" id="pimage" name="pimage" placeholder="Enter product image"
             [(ngModel)]="product.pimage">
         </div>
-
-        <!--<div class="col-md-6">
-            <img [src]="url" height="200">
+    </div>
+  <!-- <div class="form-group">
+        <div class="col-md-6">
+            <img [src]="imgurl" height="200">
             <input type="file" class="form-control" (change)="onselectFile($event)" id="pimage" name="pimage" placeholder="Enter product image"
             [(ngModel)]="product.pimage">
-        </div> -->
-   
+        </div> 
+    </div> -->
+    <div class="form-group">
         <div class="col-md-6">
             <p>Enter Product Quantity</p>
         </div>
@@ -48,7 +56,10 @@
             <input type="text" class="form-control" id="pquantity" name="pquantity" placeholder="Enter product quantity"
             [(ngModel)]="product.pquantity">
         </div>
-
-</div>
-    <button class="btn btn-primary" (click)="addProducts()" style="margin-left: 52%; margin-top: 20px;">Add Products</button>
+    </div>
+    </form>
+    <button class="btn btn-primary" (click)="addProducts()" style="margin-top: 30px;">Add Products</button>
+    </div>
+    </div>
+    
 </div>

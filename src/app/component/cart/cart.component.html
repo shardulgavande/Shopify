@@ -21,17 +21,22 @@
                 <td>{{product.pname}}</td>
                 <td>{{product.pprice}}</td>
                 <td>{{product.pdesc}}</td>
-                <td>{{product.pimage}}</td>
+                <td><img style="width: 120px;"src="{{product.pimage}}"></td>
                 <td>{{product.pquantity}}</td>
-                <td>{{product.total}}</td>
+                <td>{{product.pprice}}</td>
                 <td><button type="button" (click)="removeItem(product)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
           </tr>
           <tr>
             <td colspan="4"></td>
             <td><button (click)="emptycart()" class="btn btn-danger">Empty Cart</button></td>
             <td><button routerLink="/products" class="btn btn-primary">Shop More</button></td>
+<<<<<<< Updated upstream
             <td><button class="btn btn-success" routerLink="/payment">Checkout</button></td>
             <td><strong>Grand Total : ${{grandTotal}}</strong></td>
+=======
+            <td><button class="btn btn-success">Checkout</button></td>
+            <td><strong>Grand Total : ₹{{grandTotal}}</strong></td>
+>>>>>>> Stashed changes
         </tr>
 </tbody>
 </table>
