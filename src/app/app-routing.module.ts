@@ -12,6 +12,8 @@ import { AdminLoginComponent } from './component/admin/admin-login/admin-login.c
 import { AdminRegistrationComponent } from './component/admin/admin-registration/admin-registration.component';
 import { HomeComponent } from './component/home/home.component';
 import { CartComponent } from './component/cart/cart.component';
+import { EditProfileComponent } from './component/user/edit-profile/edit-profile.component';
+import { HomeheaderComponent } from './component/homeheader/homeheader.component';
 import { AuthGuard } from './shared/auth.guard';
 
 
@@ -25,12 +27,13 @@ const routes: Routes = [
   //{path: 'dashboard/products/delete/:id', component: ProductListComponent}
   {path:'login', component:LoginComponent},
   {path:'register' , component:RegistrationComponent},
-  {path:'payment' , component:PaymentComponent},
   {path:'adminregister' , component:AdminRegistrationComponent},
   {path:'adminlogin' , component:AdminLoginComponent},
   {path:'home' , component:HomeComponent,canActivate:[AuthGuard]},
   {path:'users/cart' , component:CartComponent,canActivate:[AuthGuard]},
-  {path:'payment' , component:PaymentComponent,canActivate:[AuthGuard]}
+  {path:'payment' , component:PaymentComponent,canActivate:[AuthGuard]},
+
+
 
 ];
 

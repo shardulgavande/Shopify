@@ -22,6 +22,9 @@ import { HomeComponent } from './component/home/home.component';
 import { PaymentComponent } from './component/payment/payment.component';
 
 import { FooterComponent } from './component/footer/footer.component';
+import { EditProfileComponent } from './component/user/edit-profile/edit-profile.component';
+import { HomeheaderComponent } from './component/homeheader/homeheader.component';
+
 
 
 
@@ -43,6 +46,9 @@ import { FooterComponent } from './component/footer/footer.component';
     HomeComponent,
     PaymentComponent,
     FooterComponent,
+    EditProfileComponent,
+    HomeheaderComponent
+
   ],
   imports: [
     BrowserModule,
