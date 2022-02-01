@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   // products:any;
   public productList: any;
   public totalItem:number=0;
+  pQuantity = 2;
 
   constructor(private router:Router,private userService:UserService,
     private productapi:ProductapiService,private cartService:CartService) { }
@@ -35,7 +36,7 @@ export class HomeComponent implements OnInit {
       this.productList=res;
 
       this.productList.forEach((a:any)=>{
-        Object.assign(a,{quantity:1,total:a.price});
+        Object.assign(a,{quantity:this.pQuantity,total:a.price});
       });
     })
 
@@ -47,7 +48,7 @@ export class HomeComponent implements OnInit {
   }
 
   addtocart(product:any){
-    this.cartService.addtoCart(product);
+    this.cartService.addtoCart(product,this.pQuantity);
 
   }
 

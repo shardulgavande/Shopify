@@ -25,7 +25,7 @@ exports.createProducts=(req,resp)=>{
         pname:req.body.pname,
         pprice: req.body.pprice,
         pdesc: req.body.pdesc,
-        pimage: req.body.pimage,
+        pimage: req.pimage,
         pquantity: req.body.pquantity,
         subcat_id: req.body.subcat_id,
         createdAt: new Date(),

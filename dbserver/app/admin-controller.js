@@ -5,6 +5,7 @@ const Admin=db.Admin;
 
 // 1. select * from users => findAll
 
+
 exports.findAll=(req,resp)=>{
     Admin.findAll()
         .then(data=>resp.json(data))

@@ -13,12 +13,14 @@ export class CartComponent implements OnInit {
 
   public products : any=[];
   public grandTotal !: number;
+  public total!: number;
 
   constructor(private cartService:CartService,private router:Router) { }
 
   ngOnInit(): void {
     this.cartService.getProducts().subscribe(res=>{
       this.products = res;
+      this.total = this.cartService.getTotalPrice();
       this.grandTotal= this.cartService.getTotalPrice();
     })
 

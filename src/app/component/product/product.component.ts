@@ -35,10 +35,10 @@ export class ProductComponent implements OnInit {
     this.productapi.getProducts().subscribe(allProducts=>this.products=allProducts);
   }
 
-  addtocart(product:any){
-    this.cartService.addtoCart(product);
+  // addtocart(product:any){
+  //   this.cartService.addtoCart(product);
 
-  }
+  // }
 
   prod(){
 
