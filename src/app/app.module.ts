@@ -25,6 +25,8 @@ import { FooterComponent } from './component/footer/footer.component';
 import { EditProfileComponent } from './component/user/edit-profile/edit-profile.component';
 import { HomeheaderComponent } from './component/homeheader/homeheader.component';
 import { CategoryComponent } from './component/category/category.component';
+import { AddSubcategoryComponent } from './component/add-subcategory/add-subcategory.component';
+import { AddCategorytypeComponent } from './component/add-categorytype/add-categorytype.component';
 
 
 
@@ -49,7 +51,9 @@ import { CategoryComponent } from './component/category/category.component';
     FooterComponent,
     EditProfileComponent,
     HomeheaderComponent,
-    CategoryComponent
+    CategoryComponent,
+    AddSubcategoryComponent,
+    AddCategorytypeComponent
 
   ],
   imports: [
@@ -63,4 +67,12 @@ import { CategoryComponent } from './component/category/category.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  cartService: any;
+
+  logout(){
+    localStorage.removeItem('token');
+    this.cartService.removeAllCart();
+  }
+ }

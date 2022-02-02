@@ -59,11 +59,11 @@ export class HomeComponent implements OnInit {
     console.log(qid);
   }
 
-  logout(){
-    localStorage.removeItem('token');
-    this.cartService.removeAllCart();
-    this.router.navigateByUrl('/login');
+  // logout(){
+  //   localStorage.removeItem('token');
+  //   this.cartService.removeAllCart();
+  //   this.router.navigateByUrl('/login');
 
-  }
+  // }
 
 }

@@ -39,12 +39,12 @@ export class CartComponent implements OnInit {
     this.cartService.removeAllCart();
   }
 
-  logout(){
-    localStorage.removeItem('token');
-    this.cartService.removeAllCart();
-    this.router.navigateByUrl('/login');
+  // logout(){
+  //   localStorage.removeItem('token');
+  //   this.cartService.removeAllCart();
+  //   this.router.navigateByUrl('/login');
 
-  }
+  // }
 
 
 }

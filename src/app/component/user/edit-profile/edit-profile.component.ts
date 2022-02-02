@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 import { IUser } from 'src/app/IUser';
 import { UserService } from 'src/app/service/user.service';
 
@@ -11,62 +12,80 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class EditProfileComponent implements OnInit {
 
-//   id!: number;
-
-//   user!: IUser;
-
-//  form!: FormGroup;
-
-//   constructor(
-//      public userService: UserService,
-
-//      private route: ActivatedRoute,
-
-//      private router: Router) { }
+  form!: FormGroup;
+  id:any;
+  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute,
+   private router: Router, private userService:UserService ) { }
 
   ngOnInit(): void {
 
-//     this.id = this.route.snapshot.params['id'];
+    this.id = this.route.snapshot.params['id'];
+    console.log("this.id "+this.id);
 
-//  this.userService.find(this.id).subscribe((data:IUser)=>{
 
-//  this.user = data;
-  // })
+    // password not required in edit mode
 
-}
-// this.form = new FormGroup({
 
-//    productName: new FormControl('', [Validators.required]),
+    this.form = new FormGroup({
+      name: new FormControl('', [Validators.required]),
+      emailId: new FormControl('',[Validators.required, Validators.email]),
+      password: new FormControl('',[Validators.required]),
+      mobileNo: new FormControl('', Validators.required)
+    });
 
-//    Description: new FormControl('', Validators.required),
 
-//    image: new FormControl('', Validators.required),
-
-//    price: new FormControl('', Validators.required),
-
-//    Category: new FormControl('', Validators.required)
-
-//    });
-
-//   get f(){
-
-//      return this.form.controls;
-
-//    }
+        this.userService.find(this.id)
+            .pipe(first())
+            .subscribe(x => this.form.patchValue(x));
 
 
 
-//     submit(){
-
-//      console.log(this.form.value);
-
-//      this.userService.update(this.id, this.form.value).subscribe((res:any) => {
-
-//     console.log('Product Details updated successfully!');
-
-//     this.router.navigateByUrl('/productlist');
-
-//      })
-//  }
 
 }
+
+get f() {
+   return this.form.controls;
+  }
+
+//   onSubmit() {
+//     // reset alerts on submit
+//     // stop here if form is invalid
+//     if (this.form.invalid) {
+//         return;
+//     }
+
+
+
+
+
+//         this.updateUser();
+
+// }
+
+// private createUser() {
+//     this.accountService.register(this.form.value)
+//         .pipe(first())
+//         .subscribe({
+//             next: () => {
+
+//             },
+//             error: error => {
+//                 alert()
+//                 this.loading = false;
+//             }
+//         });
+// }
+
+submit() {
+  this.userService.update(this.id, this.form.value).subscribe((res:any) => {
+
+    console.log('User Details updated successfully!');
+
+    this.router.navigateByUrl('/home');
+
+   })
+}
+}
+
+
+

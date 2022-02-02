@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductapiService } from 'src/app/service/productapi.service';
+import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
   selector: 'app-edit-product',
@@ -28,7 +29,12 @@ export class EditProductComponent implements OnInit {
 
   ngOnInit(): void {
    this.getProducts(this.route.snapshot.paramMap.get('id'));
+
   }
+
+  public user={username:null,age:null}
+
+
 
   getProducts(id:any):void{
     this.productService.get(id)

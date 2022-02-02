@@ -48,6 +48,7 @@ export class PaymentComponent implements OnInit {
     this.cartService.removeAllCart();
     this.router.navigateByUrl('/login');
 
-  }
+  // }
 
+}
 }
