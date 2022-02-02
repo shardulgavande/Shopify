@@ -1,0 +1,25 @@
+
+<app-dashboard></app-dashboard>
+<h2 style="text-align: center;">Add Subcategory</h2><br>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-lg-4 offset-lg-4">
+        <form>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <p>Enter Subcategory Name</p>
+        </div>
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="type_name" name="type_name" placeholder="Enter CategoryType name"
+            [(ngModel)]="categorytype.type_name">
+        </div>
+        </div>
+    </form>
+    <button class="btn btn-primary" (click)="addCategorytype()" routerLink="/dashboard" style="margin-top: 30px;">Add Products</button>
+    </div>
+    </div>
+
+</div>
+
+

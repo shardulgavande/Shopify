@@ -11,6 +11,7 @@ export class UserService {
  //http://localhost:3000/users/
  private user_urls = "http://localhost:3000/app/users";
  private user_find = "http://localhost:3000/app/users";
+ private user_reg = "http://localhost:3000/app/users/reg";
  private user_add = "http://localhost:3000/app/users/add";
  private user_update = "http://localhost:3000/app/users/update/";
  private user_delete = "http://localhost:3000/app/users/delete/";
@@ -25,7 +26,10 @@ export class UserService {
  };
 
  find(id:number): Observable<IUser> {
-  return this.httpclient.get<IUser>(this.user_find+"/"+id);
+  return this.httpclient.get<IUser>(this.user_reg+"/"+id);
+}
+register(user:any){
+  return this.httpclient.get<IUser>(this.user_find+"/",user);
 }
 
 

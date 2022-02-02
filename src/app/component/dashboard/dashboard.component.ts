@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  router: any;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  logout(){
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/adminlogin');
   }
 
 }

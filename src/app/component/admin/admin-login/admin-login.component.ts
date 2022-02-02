@@ -44,6 +44,7 @@ export class AdminLoginComponent implements OnInit {
 
       if(user){
         alert("Login Success");
+        localStorage.setItem('token',"dfdfdtrtdry.drddhfdhdyrdt.drftftfytfy");
         this.form.reset;
         this.router.navigateByUrl('/dashboard');
       }else{

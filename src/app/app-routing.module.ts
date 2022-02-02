@@ -14,14 +14,16 @@ import { HomeComponent } from './component/home/home.component';
 import { CartComponent } from './component/cart/cart.component';
 import { EditProfileComponent } from './component/user/edit-profile/edit-profile.component';
 import { HomeheaderComponent } from './component/homeheader/homeheader.component';
+import { AddSubcategoryComponent } from './component/add-subcategory/add-subcategory.component';
 import { AuthGuard } from './shared/auth.guard';
+import { AddCategorytypeComponent } from './component/add-categorytype/add-categorytype.component';
 
 
 const routes: Routes = [
   {path: '',redirectTo:'product', pathMatch:'full'},
   {path: '', component:ProductComponent},
   {path: 'dashboard/products/add', component: AddProductComponent},
-  {path: 'dashboard', component: DashboardComponent},
+  {path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuard]},
   {path: 'dashboard/products/list', component: ProductListComponent},
   {path: 'dashboard/products/edit/:id', component: EditProductComponent},
   //{path: 'dashboard/products/delete/:id', component: ProductListComponent}
@@ -32,7 +34,9 @@ const routes: Routes = [
   {path:'home' , component:HomeComponent,canActivate:[AuthGuard]},
   {path:'users/cart' , component:CartComponent,canActivate:[AuthGuard]},
   {path:'payment' , component:PaymentComponent,canActivate:[AuthGuard]},
-
+  {path:'subcategory' , component:AddSubcategoryComponent,canActivate:[AuthGuard]},
+  {path:'editprofile' , component:EditProfileComponent,canActivate:[AuthGuard]},
+  {path:'categorytype' , component:AddCategorytypeComponent,canActivate:[AuthGuard]},
 
 
 ];

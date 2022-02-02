@@ -7,6 +7,8 @@ module.exports=(app)=>{
   const UserController=require('./user-controller');
   const AdminController=require('./admin-controller');
   const CartController = require('./cart-controller');
+  const SubCategoryController = require('./subcategory-controller');
+  const CategoryTypeController = require('./categorytype-controller');
 
     /*Products Route*/
     ROUTER.get('/products',ProductsController.findAll);
@@ -32,6 +34,20 @@ module.exports=(app)=>{
     /* Cart Router */
     ROUTER.post('/cart/add', CartController.createCart);
     ROUTER.get('/cart', CartController.findAll);
+
+      /*SubCategory Route*/
+      ROUTER.get('/subcategories',SubCategoryController.findAll);
+      ROUTER.get('/subcategories/:id',SubCategoryController.findByPK);
+      ROUTER.post('/subcategories/add',SubCategoryController.createSubCategories);
+      ROUTER.put('/subcategories/update/:id',SubCategoryController.updateSubCategories);
+      ROUTER.delete('/subcategories/delete/:id',SubCategoryController.deleteSubCategories);
+
+      /*CategoryTypes Route*/
+      ROUTER.get('/categorytypes',CategoryTypeController.findAll);
+      ROUTER.get('/categorytypes/:id',CategoryTypeController.findByPK);
+      ROUTER.post('/categorytypes/add',CategoryTypeController.createCategoryType);
+      ROUTER.put('/categorytypes/update/:id',CategoryTypeController.updateCategoryType);
+      ROUTER.delete('/categorytypes/delete/:id',CategoryTypeController.deleteCategoryType);
 
   app.use('/app',ROUTER);
 
