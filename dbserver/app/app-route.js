@@ -10,6 +10,9 @@ module.exports=(app)=>{
   const CategoryController=require('./category-controller');
   const SubCategoryController = require('./subcategory-controller');
   const CategoryTypeController = require('./categorytype-controller');
+  const OrdersController = require('./order-controller');
+  const OrderItemsController = require('./orderitems-controller');
+  const PaymentController = require('./payment-controller');
 
     /*Products Route*/
     ROUTER.get('/products',ProductsController.findAll);
@@ -55,6 +58,20 @@ module.exports=(app)=>{
       ROUTER.post('/categorytypes/add',CategoryTypeController.createCategoryType);
       ROUTER.put('/categorytypes/update/:id',CategoryTypeController.updateCategoryType);
       ROUTER.delete('/categorytypes/delete/:id',CategoryTypeController.deleteCategoryType);
+
+      /*Orders Route*/
+      ROUTER.get('/orders',OrdersController.findAll);
+      ROUTER.post('/orders/create',OrdersController.createOrder);
+
+
+      /*OrderItems Route*/
+      ROUTER.get('/orders/items',OrderItemsController.findAll);
+      ROUTER.post('/orders/items/add',OrderItemsController.createOrderItems);
+
+
+      /*Payment Route*/
+      ROUTER.get('/payment',PaymentController.findAll);
+      ROUTER.post('/payment/add',PaymentController.createPayment);
 
   app.use('/app',ROUTER);
 
