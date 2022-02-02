@@ -13,11 +13,14 @@ import { ProductapiService } from 'src/app/service/productapi.service';
 })
 export class HomeComponent implements OnInit {
 
-  products : IProducts[] = [];
+ // quantity:any;
+ 
+ // qid = (<HTMLInputElement>document.getElementById("quantity")).value;
+  products : any=[];
   // products:any;
   public productList: any;
   public totalItem:number=0;
-  pQuantity = 2;
+  //pQuantity = 2;
 
   constructor(private router:Router,private userService:UserService,
     private productapi:ProductapiService,private cartService:CartService) { }
@@ -33,10 +36,12 @@ export class HomeComponent implements OnInit {
     })
 
     this.productapi.getProducts().subscribe(res=>{
+
       this.productList=res;
 
       this.productList.forEach((a:any)=>{
-        Object.assign(a,{quantity:this.pQuantity,total:a.price});
+        // qid = ((document.getElementById("quantity") as HTMLInputElement).value);
+        Object.assign(a,{quantity:1,total:a.price});
       });
     })
 
@@ -47,9 +52,11 @@ export class HomeComponent implements OnInit {
     this.productapi.getProducts().subscribe(allProducts=>this.products=allProducts);
   }
 
-  addtocart(product:any){
-    this.cartService.addtoCart(product,this.pQuantity);
-
+  addtocart(product:any,qid:any){
+    console.log(product.id);
+   // qid = ((document.getElementById("{{'quantity' + product.id}}") as HTMLInputElement).value);
+    this.cartService.addtoCart(product,qid);
+    console.log(qid);
   }
 
   logout(){
