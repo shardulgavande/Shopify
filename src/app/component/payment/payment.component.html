@@ -46,54 +46,49 @@
 <article class="card mb-4">
 <div class="card-body">
 <h2 class="card-title mb-4">Contact details</h2>
-<form action="">
+
+<form>
+
   <div class="row">
       <div class="form-group col-sm-6">
-          <label>First name</label>
-          <input type="text" placeholder="Enter your first name" class="form-control" required>
-      </div>
+        <label for="fname">Enter your first name:</label>
+        <input type="text" id ="fname" class="form-control" placeholder="Enter Your Name"  />
+                <!-- <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+              <div *ngIf="f['name'].errors && f['name'].errors['required']">First name is required.</div>
+      </div> -->
+
       <div class="form-group col-sm-6">
-          <label>Last name</label>
-          <input type="text" placeholder="Enter your last name" class="form-control" required>
-      </div>
+        <label for="lname">Enter your last name : </label>
+        <input type="text"  id ="lname" class="form-control" placeholder="Enter Your Name"  />
+                <!-- <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+              <div *ngIf="f['name'].errors && f['name'].errors['required']">Last name is required.</div>
+      </div> -->
+
       <div class="form-group col-sm-6">
           <label>Phone</label>
 
           <input type="text" value="+91" class="form-control" placeholder="Enter valid phone number" required>
 
       </div>
+
       <div class="form-group col-sm-6">
           <label>Email</label>
           <input type="email" placeholder="example@gmail.com" class="form-control" required>
       </div>
   </div> <!-- row.// -->
+  </div>
+  </div>
 </form>
 </div> <!-- card-body.// -->
-</article> <!-- card.// -->
+</article>
 
 
 <article class="card mb-4">
 <div class="card-body">
 <h2 class="card-title mb-4">Delivery details</h2>
+<p>Order will be delivered at this address</p>
+
 <form action="">
-  <!-- <div class="row">
-      <div class="form-group col-sm-6">
-          <label class="js-check box active">
-              <input type="radio" name="dostavka" value="option1" checked="">
-              <h6 class="title">Delivery</h6>
-              <!-- <p class="text-muted">We will deliver by DHL Kargo</p> -->
-          <!-- </label> <!-- js-check.// -->
-      <!-- </div>
-      <div class="form-group col-sm-6">
-          <label class="js-check box">
-              <input type="radio" name="dostavka" value="option1">
-              <h6 class="title">Pick-up</h6>
-              <p class="text-muted">Come to our office to somewhere </p> -->
-          <!-- </label> js-check.// -->
-      <!-- </div> -->
-  <!-- </div> row.// -->
-
-
   <div class="row" style="padding: 10px;">
           <div class="form-group col-sm-6">
               <label>City*</label>

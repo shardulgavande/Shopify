@@ -7,6 +7,7 @@ module.exports=(app)=>{
   const UserController=require('./user-controller');
   const AdminController=require('./admin-controller');
   const CartController = require('./cart-controller');
+  const CategoryController=require('./category-controller');
 
     /*Products Route*/
     ROUTER.get('/products',ProductsController.findAll);
@@ -32,6 +33,13 @@ module.exports=(app)=>{
     /* Cart Router */
     ROUTER.post('/cart/add', CartController.createCart);
     ROUTER.get('/cart', CartController.findAll);
+
+     /*Category Route*/
+    ROUTER.get('/category',CategoryController.findAll);
+    ROUTER.get('/category/:id',CategoryController.findByPK);
+    ROUTER.post('/category/add',CategoryController.createCategory);
+    ROUTER.put('/category/update/:id',CategoryController.updateCategory);
+    ROUTER.delete('/category/delete/:id',CategoryController.deleteCategory);
 
   app.use('/app',ROUTER);
 

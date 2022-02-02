@@ -24,6 +24,7 @@ import { PaymentComponent } from './component/payment/payment.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { EditProfileComponent } from './component/user/edit-profile/edit-profile.component';
 import { HomeheaderComponent } from './component/homeheader/homeheader.component';
+import { CategoryComponent } from './component/category/category.component';
 
 
 
@@ -47,7 +48,8 @@ import { HomeheaderComponent } from './component/homeheader/homeheader.component
     PaymentComponent,
     FooterComponent,
     EditProfileComponent,
-    HomeheaderComponent
+    HomeheaderComponent,
+    CategoryComponent
 
   ],
   imports: [

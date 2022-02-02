@@ -15,6 +15,7 @@ import { CartComponent } from './component/cart/cart.component';
 import { EditProfileComponent } from './component/user/edit-profile/edit-profile.component';
 import { HomeheaderComponent } from './component/homeheader/homeheader.component';
 import { AuthGuard } from './shared/auth.guard';
+import { CategoryComponent } from './component/category/category.component';
 
 
 const routes: Routes = [
@@ -32,9 +33,7 @@ const routes: Routes = [
   {path:'home' , component:HomeComponent,canActivate:[AuthGuard]},
   {path:'users/cart' , component:CartComponent,canActivate:[AuthGuard]},
   {path:'payment' , component:PaymentComponent,canActivate:[AuthGuard]},
-
-
-
+  {path:'category', component:CategoryComponent}
 ];
 
 @NgModule({
