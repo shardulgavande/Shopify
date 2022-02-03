@@ -27,7 +27,7 @@ import { HomeheaderComponent } from './component/homeheader/homeheader.component
 import { CategoryComponent } from './component/category/category.component';
 import { AddSubcategoryComponent } from './component/add-subcategory/add-subcategory.component';
 import { AddCategorytypeComponent } from './component/add-categorytype/add-categorytype.component';
-
+import { DatePipe } from '@angular/common'
 
 
 
@@ -64,7 +64,7 @@ import { AddCategorytypeComponent } from './component/add-categorytype/add-categ
     ReactiveFormsModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {

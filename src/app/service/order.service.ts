@@ -12,7 +12,18 @@ export class OrderService {
   };
   constructor(private httpClient:HttpClient) { }
 
+  getOrders(id:number): Observable<any> {
+    return this.httpClient.get(`${this.base_url+"/app/orders"}${id}`);
+  }
+
+  create(data:any):Observable<any>{
+    return this.httpClient.post(this.base_url+"/app/orders/create",data,this.http_option);
+  }
+
   createItem(data:any):Observable<any>{
     return this.httpClient.post(this.base_url+"/app/orders/items/add",data,this.http_option);
+  }
+  createPayment(data:any):Observable<any>{
+    return this.httpClient.post(this.base_url+"/app/payment/add",data,this.http_option);
   }
 }
