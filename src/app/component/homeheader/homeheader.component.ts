@@ -23,15 +23,21 @@ export class HomeheaderComponent implements OnInit {
       this.totalItem= res.length;
     })
 
-    
+
     this.uname = sessionStorage.getItem('uname');
     this.uid = sessionStorage.getItem('uid');
   }
 
+  // search(event:any){
+  //   this.searchTerm =(event.target as HTMLInputElement).value;
+  //   console.log(this.searchTerm);
+  //   this.cartService.search.next(this.searchTerm);
+  // }
+
   logout(){
     localStorage.removeItem('token');
     this.cartService.removeAllCart();
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/product');
 
   }
 

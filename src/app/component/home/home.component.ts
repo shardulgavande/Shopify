@@ -12,9 +12,10 @@ import { ProductapiService } from 'src/app/service/productapi.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  searchKey:string="";
 
  // quantity:any;
- 
+
  // qid = (<HTMLInputElement>document.getElementById("quantity")).value;
   products : any=[];
   // products:any;
@@ -43,6 +44,10 @@ export class HomeComponent implements OnInit {
         // qid = ((document.getElementById("quantity") as HTMLInputElement).value);
         Object.assign(a,{quantity:1,total:a.price});
       });
+    })
+
+    this.cartService.search.subscribe((val:any)=>{
+      this.searchKey = val;
     })
 
 

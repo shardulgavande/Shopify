@@ -15,14 +15,14 @@ exports.findAll=(req,resp)=>{
 
 exports.createOrder=(req,resp)=>{
 
-  
+
     const newOrder={
-        id:req.body.id,
+
         ordernumber:req.body.ordernumber,
         uid:req.body.uid,
         address:req.body.address,
         ordertotal:req.body.ordertotal,
-        odate:req.body.odate,
+        odate:new Date(),
         createdAt: new Date(),
         updatedAt: new Date()
     }

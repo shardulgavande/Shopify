@@ -4,152 +4,55 @@
       <div class="col-lg-4 offset-lg-4">
         <div class="card bg-light">
           <div class="card-body">
-            <h4 class="text-center">Registration</h4>
+            <h4 class="text-center">Edit Profile</h4>
             <hr />
-            <form [formGroup]="form" (ngSubmit)="submit()">
-
-             <!-- <div class="form-group">
-                <label class="form-control-label">Name</label>
-                <input type="text" formControlName="name" id ="name" class="form-control" placeholder="Enter Your Name"  />
-                <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
-              <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
-          </div>
-      </div>
-
-      <div class="form-group">
-        <label class="form-control-label">Mobile Number</label>
-        <input
-          type="mobileNo"
-          formControlName="mobileNo"
-
-          class="form-control"
-          pattern="[789][0-9]{9}"
-
-          placeholder="Enter Your Mobile Number"
-        />
-        <div *ngIf="f['mobileNo'].touched && f['mobileNo'].invalid" class="alert alert-danger">
-          <div *ngIf="f['mobileNo'].errors && f['mobileNo'].errors['required']"> Enter Mobile Number.</div>
-      </div>
-      </div>
-
-
-              <div class="form-group">
-                <label class="form-control-label">Email</label>
-                <input type="emailId" id="email" formControlName="emailId" class="form-control" placeholder="Enter Your Email Id"/>
-                <div *ngIf="f['emailId'].touched && f['emailId'].invalid" class="alert alert-danger">
-                  <div *ngIf="f['emailId'].errors && f['emailId'].errors['required']">Email is required & @ should be present.</div>
+              <form [formGroup]="form" >
+                <div class="form-row">
+                  <div class="form-group col">
+                    <label class="form-control-label">Name</label>
+                    <input type="text" formControlName="name" id ="name" class="form-control" placeholder="Enter Your Name"  />
+                    <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+                  <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
               </div>
-          </div>
+                  </div>
+                  <div class="form-group col">
+                    <label class="form-control-label">Mobile Number</label>
+                    <input
+                      type="mobileNo"
+                      formControlName="mobileNo"
 
-              <div class="form-group">
-                <label class="form-control-label">Password</label>
-                <input
-                  type="password"
-                  formControlName="password"
+                      class="form-control"
+                      pattern="[789][0-9]{9}"
 
-                  class="form-control"
-
-                  [(ngModel)]="password"
-                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                  placeholder="Enter Your Password"
-                />
-                <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger">
-                  <div *ngIf="f['password'].errors && f['password'].errors['required']">Password is required & Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters.</div>
-
-                </div>
+                      placeholder="Enter Your Mobile Number"
+                    />
+                    <div *ngIf="f['mobileNo'].touched && f['mobileNo'].invalid" class="alert alert-danger">
+                      <div *ngIf="f['mobileNo'].errors && f['mobileNo'].errors['required']"> Enter Mobile Number.</div>
+                  </div>
+                  </div>
               </div>
+              <div class="form-row">
+                  <div class="form-group col">
+                    <label class="form-control-label">Password</label>
+                    <input
+                      type="password"
+                      formControlName="password"
+                      class="form-control"
+                      pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                      placeholder="Enter Your Password"
+                    />
+                    <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger">
+                      <div *ngIf="f['password'].errors && f['password'].errors['required']">Password is required & Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters.</div>
+                    </div>
+                  </div>
+      </div><br>
 
-              <!-- <div class="form-check">
-                <label class="form-check-label">
-                  <input type="checkbox" name="isSeller" class="form-check-input" [(ngModel)]="isSeller"> Register as Seller
-                </label>
-              </div> -->
-               <!-- <hr /> -->
-                <!-- <input
-                type="button"
-                value="Submit"
-                class="btn btn-primary btn-block"
-
-                [disabled]="btnDisabled"
-              /> -->
-
-               <!-- <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
-      &nbsp;
-    </form>
-      <a  routerLink="/login"  >Already registered? Click to Login!!</a>
-
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
- --> -->
-
-
-
-<!-- <form [formGroup]="form" (ngSubmit)="submit()"> -->
-    <div class="form-row">
-        <div class="form-group col">
-          <label class="form-control-label">Name</label>
-          <input type="text" formControlName="name" id ="name" class="form-control" placeholder="Enter Your Name"  />
-          <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
-        <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
-    </div>
-        </div>
-        <div class="form-group col">
-          <label class="form-control-label">Mobile Number</label>
-          <input
-            type="mobileNo"
-            formControlName="mobileNo"
-
-            class="form-control"
-            pattern="[789][0-9]{9}"
-
-            placeholder="Enter Your Mobile Number"
-          />
-          <div *ngIf="f['mobileNo'].touched && f['mobileNo'].invalid" class="alert alert-danger">
-            <div *ngIf="f['mobileNo'].errors && f['mobileNo'].errors['required']"> Enter Mobile Number.</div>
-        </div>
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col">
-          <label class="form-control-label">Password</label>
-          <input
-            type="password"
-            formControlName="password"
-
-            class="form-control"
-
-
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-            placeholder="Enter Your Password"
-          />
-          <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger">
-            <div *ngIf="f['password'].errors && f['password'].errors['required']">Password is required & Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters.</div>
-
-          </div>
-        </div>
-        <!-- <div class="form-group col">
-            <label for="password">
-                Password
-                <em *ngIf="!isAddMode">(Leave blank to keep the same password)</em>
-            </label>
-            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                <div *ngIf="f.password.errors.required">Password is required</div>
-                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-            </div>
-        </div> -->
-     </div>
     <div class="form-group">
-        <button  class="btn btn-primary" type="submit" routerLink="/home">
+        <button  class="btn btn-primary" type="submit" (click)="submit()" [disabled]="!form.valid" routerLink="/home">
 
             Save
-        </button>
-        <a routerLink="/home" class="btn btn-link">Cancel</a>
+        </button>&nbsp;
+        <button  class="btn btn-primary" routerLink="/home">Cancel </button>
     </div>
  </form>
  </div>
@@ -157,4 +60,4 @@
 </div>
 </div>
 </div>
-<!-- </section>   -->
+

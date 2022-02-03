@@ -27,6 +27,9 @@ import { HomeheaderComponent } from './component/homeheader/homeheader.component
 import { CategoryComponent } from './component/category/category.component';
 import { AddSubcategoryComponent } from './component/add-subcategory/add-subcategory.component';
 import { AddCategorytypeComponent } from './component/add-categorytype/add-categorytype.component';
+import { FilterPipe } from './shared/filter.pipe';
+import { CartService } from './service/cart.service';
+import { Router } from '@angular/router';
 
 
 
@@ -53,7 +56,8 @@ import { AddCategorytypeComponent } from './component/add-categorytype/add-categ
     HomeheaderComponent,
     CategoryComponent,
     AddSubcategoryComponent,
-    AddCategorytypeComponent
+    AddCategorytypeComponent,
+    FilterPipe
 
   ],
   imports: [
@@ -69,10 +73,9 @@ import { AddCategorytypeComponent } from './component/add-categorytype/add-categ
 })
 export class AppModule {
 
-  cartService: any;
+  constructor(private cartService:CartService,private router:Router){}
 
-  logout(){
-    localStorage.removeItem('token');
-    this.cartService.removeAllCart();
-  }
+
+
+
  }

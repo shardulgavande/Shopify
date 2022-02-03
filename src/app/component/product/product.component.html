@@ -25,18 +25,21 @@
     </div>
 </div>
 <section id="men-products"><div class="container" style="padding-top: 30px;">
-    <div class="row">
-        <ng-container *ngFor="let product of products">
-        <div class="col-md-3">
-            <img src="{{product.pimage}}" alt="" style="width: 270px; height: 350px;">
-            <h5>{{product.pname}}</h5>
-            <p>₹{{product.pprice}}</p>
-
-            <button class="btn btn-primary"  (click)="prod()" routerLink="/login">Add to Cart</button>
-            <input type="number" id="quantity" name="quantity" min="1" max="5">
+  <div class="row">
+    <ng-container *ngFor="let product of products  ; let i = index">
+    <div class="col-md-3">
+        <img src="{{product.pimage}}" alt="" style="width: 270px; height: 350px;">
+        <h5 style="text-align: center;">{{product.pname}}</h5>
+        <div style="display: flex;">
+          <p>₹{{product.pprice}}</p><span style="margin-left: 100px;">Quantity: {{product.pquantity}}</span>
         </div>
-    </ng-container>
+        <div style="display: flex;">
+        <button class="btn btn-primary" (click)=prod() routerLink="/login">Add to Cart</button>
+        <input type="number" style="margin-left: 20px;" placeholder="Quantity" class="form-control" #pqid id= "{{'quantity' + product.id }}" name="quantity" min="1" max="{{product.pquantity}}">
+        </div>
+        <!-- <input type="number" id= "{{'quantity' +i }}" name="quantity" min="1" max="5" value="index">  -->
     </div>
+</ng-container>
 </div>
-</section>
+
 

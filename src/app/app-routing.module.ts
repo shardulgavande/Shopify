@@ -22,7 +22,7 @@ import { AddCategorytypeComponent } from './component/add-categorytype/add-categ
 
 const routes: Routes = [
   {path: '',redirectTo:'product', pathMatch:'full'},
-  {path: '', component:ProductComponent},
+  {path: 'product', component:ProductComponent},
   {path: 'dashboard/products/add', component: AddProductComponent},
   {path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuard]},
   {path: 'dashboard/products/list', component: ProductListComponent},

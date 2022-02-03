@@ -10,7 +10,7 @@ import { ProductapiService } from 'src/app/service/productapi.service';
 })
 export class ProductComponent implements OnInit {
 
-  products : IProducts[] = [];
+  products :any=[];
 
   // products:any;
   public productList: any;
@@ -43,6 +43,7 @@ export class ProductComponent implements OnInit {
   prod(){
 
     alert("Please login");
+
   }
 
 }

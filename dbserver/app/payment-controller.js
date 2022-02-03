@@ -1,6 +1,9 @@
 const { response } = require('express');
 //const { account } = require('pg/lib/defaults');
 const db = require('../db/models');
+// orderid=require('order-id')('key');
+// id =this.orderid.generate();
+
 const Payment = db.Payment;
 
 exports.findAll=(req,resp)=>{
@@ -15,7 +18,7 @@ exports.findAll=(req,resp)=>{
 
 exports.createPayment=(req,resp)=>{
 
-  
+
     const newPayment={
         id:req.body.id,
         oid:req.body.oid,

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
   <div class="container-fluid">
-    <a class="navbar-brand" >SHOPIFY</a>
+    <a class="navbar-brand" routerLink="/home" >SHOPIFY</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -24,8 +24,8 @@
           <button class="btn btn-outline-primary" type="submit" style="margin-right: 5px;">Search</button>
         </form>
 
-      <button type="button" class="btn btn-primary btn-sm" routerLink="/editprofile" style="margin-right: 10px;">Edit</button>
-      <button type="button" (click)="logout()" class="btn btn-primary btn-sm" style="background-color: red;"  routerLink="#">Logout</button>
+      <button type="button" class="btn btn-primary btn-sm" routerLink="/editprofile" style="margin-right: 10px;">Edit Profile</button>
+      <button type="button" (click)="logout()" class="btn btn-primary btn-sm" style="background-color: red;"  >Logout</button>
       <button class="byn btn-primary" routerLink="/users/cart" style="margin-left: 10px; height: 35px; width: 50px;">
 
         <i style="font-size:30px;" class="fas fa-cart-plus"></i>

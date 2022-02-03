@@ -13,14 +13,17 @@ import { UserService } from 'src/app/service/user.service';
 export class EditProfileComponent implements OnInit {
 
   form!: FormGroup;
+
   id:any;
+  uid: any;
+  product:any;
   constructor(private formBuilder: FormBuilder,private route: ActivatedRoute,
    private router: Router, private userService:UserService ) { }
 
   ngOnInit(): void {
 
-    this.id = this.route.snapshot.params['id'];
-    console.log("this.id "+this.id);
+    this.uid = sessionStorage.getItem('uid');
+    console.log("Uid "+this.uid);
 
 
     // password not required in edit mode
@@ -28,15 +31,14 @@ export class EditProfileComponent implements OnInit {
 
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required]),
-      emailId: new FormControl('',[Validators.required, Validators.email]),
       password: new FormControl('',[Validators.required]),
       mobileNo: new FormControl('', Validators.required)
     });
 
 
-        this.userService.find(this.id)
-            .pipe(first())
-            .subscribe(x => this.form.patchValue(x));
+        // this.userService.find(this.id)
+        //     .pipe(first())
+        //     .subscribe(x => this.form.patchValue(x));
 
 
 
@@ -76,10 +78,33 @@ get f() {
 //         });
 // }
 
-submit() {
-  this.userService.update(this.id, this.form.value).subscribe((res:any) => {
+getProducts(uid:any):void{
 
-    console.log('User Details updated successfully!');
+}
+
+submit() {
+
+  this.userService.find(this.uid)
+    .subscribe(
+      data =>{
+        this.product = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      });
+
+      const data = {
+        id: this.uid,
+        name: this.form.value['name'],
+        mobileNo: this.form.value['mobileNo'],
+        password: this.form.value['password'],
+
+      };
+  this.userService.update(this.uid, data).subscribe((res:any) => {
+
+    alert('User Details updated successfully!');
+    console.log(this.form.value);
 
     this.router.navigateByUrl('/home');
 

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { CartService } from 'src/app/service/cart.service';
 import { OrderService } from 'src/app/service/order.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-payment',
@@ -11,16 +13,38 @@ import { OrderService } from 'src/app/service/order.service';
 })
 export class PaymentComponent implements OnInit {
 
+  form!: FormGroup;
+
+ public address = "";
+
   public products : any=[];
   public grandTotal !: number;
   totalItem: any;
   public uid:any;
+  public i :any=45654654;
+
+  user:any;
+
+  // displayVal=val;
+
+  // order:any=[];
+
+  // order = {
+  //   ordernumber: '',
+  //   uid: '',
+  //   address: '',
+  //   ordertotal:''
+  // };
+
+
+
   // form!: FormGroup;
 
   // fname = "";
   // lname = "";
 
-  constructor(private cartService:CartService, private orderservice: OrderService, private router:Router) { }
+  constructor(private cartService:CartService,private router:Router,private userService:UserService,
+                private route: ActivatedRoute,private orderservice:OrderService) { }
 
   ngOnInit(): void {
 
@@ -29,6 +53,16 @@ export class PaymentComponent implements OnInit {
     //   lname: new FormControl('', [Validators.required]),
     // });
     this.uid = sessionStorage.getItem('uid');
+
+
+    this.form = new FormGroup({
+      address: new FormControl()
+
+    });
+
+
+    // this.getUser(this.route.snapshot.paramMap.get('id'));
+
 
     this.cartService.getProducts().subscribe(res=>{
       this.products = res;
@@ -41,49 +75,119 @@ export class PaymentComponent implements OnInit {
   }
 
     saveOrderItems(){
-      console.log(this.products);
-      this.products.map((prd:any)=>{
-        const oitem = {
-          oid: 1,
-          pid: prd.id,
-          pname: prd.pname,
-          pprice: prd.pprice,
-          pquantity: prd.pquantity,
-          ptotal: prd.itemtotal
-        }
 
-        this.orderservice.createItem(oitem)
-      .subscribe(
-        response => {
-          console.log(response);
-          alert("Order added sucess");
-          //this.submitted = true;
-        },
-        error => {
-          console.log(error);
-        });
+      console.log("Add",this.form.value.address);
 
-        console.log('prd id ' + prd.id);
-        console.log(oitem);
+
+      const data = {
+
+        ordernumber: 11,
+        uid: this.uid,
+        address: this.form.value['address'],
+        ordertotal:this.grandTotal
+
+      };
+
+      console.log(data);
+      this.orderservice.create(data)
+          .subscribe(
+            response => {
+              console.log("Order added successfully");
+              console.log('UID:',this.uid)
+              console.log(response);
+
+              //this.submitted = true;
+            },
+            error => {
+              console.log(error);
+            });
+
+
+            this.products.map((prd:any)=>{
+            const oitem = {
+              oid: 1,
+              pid: prd.id,
+              pname: prd.pname,
+              pprice: prd.pprice,
+              pquantity: prd.pquantity,
+              ptotal: prd.itemtotal
+              }
+
+
+
+              this.orderservice.createItem(oitem)
+              .subscribe(
+              response => {
+              console.log(response);
+              alert("Order Item added sucess");
+              //this.submitted = true;
+              },
+              error => {
+              console.log(error);
+              });
+
+     // console.log(this.products);
 
         //  this.pprice += a.product.pprice * a.product.pquantity;
         // grandTotal+=a.product.pprice*q;
         //  grandTotal+= a.itemtotal;
-        });
-    }
 
 
-  // get f(){
-  //   return this.form.controls;
-  // }
 
 
-  logout(){
-    localStorage.removeItem('token');
-    this.cartService.removeAllCart();
-    this.router.navigateByUrl('/login');
 
-  // }
+    })
+  }
 
-}
+
+
+  get f(){
+    return this.form.controls;
+  }
+
+
+//   logout(){
+//     localStorage.removeItem('token');
+//     this.cartService.removeAllCart();
+//     this.router.navigateByUrl('/login');
+
+
+
+// }
+
+// getUser(id:any):void{
+//   this.userService.find(id)
+//     .subscribe(
+//       data =>{
+//         this.user = data;
+//         console.log(data);
+//         console.log(id);
+//       },
+//       error => {
+//         console.log(error);
+//       });
+// }
+
+// insertOrder():void {
+//   const data = {
+
+//     ordernumber: 11,
+//     uid: this.uid,
+//     address: this.form.value,
+//     ordertotal:this.grandTotal
+
+//   };
+//   this.orderservice.create(data)
+//       .subscribe(
+//         response => {
+//           console.log("Order added successfully");
+//           console.log('UID:',this.uid)
+//           console.log(response);
+
+//           //this.submitted = true;
+//         },
+//         error => {
+//           console.log(error);
+//         });
+// }
 }
