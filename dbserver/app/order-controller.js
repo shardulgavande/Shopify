@@ -22,7 +22,7 @@ exports.createOrder=(req,resp)=>{
         uid:req.body.uid,
         address:req.body.address,
         ordertotal:req.body.ordertotal,
-        odate:new Date(),
+        odate:req.body.odate,
         createdAt: new Date(),
         updatedAt: new Date()
     }
