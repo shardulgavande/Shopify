@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/service/cart.service';
 import { OrderService } from 'src/app/service/order.service';
 import { UserService } from 'src/app/service/user.service';
+import { DatePipe } from '@angular/common'
+import { IOrder } from '../IOrder';
 
 @Component({
   selector: 'app-payment',
@@ -25,18 +27,13 @@ export class PaymentComponent implements OnInit {
 
   user:any;
 
-  // displayVal=val;
-
-  // order:any=[];
-
-  // order = {
-  //   ordernumber: '',
-  //   uid: '',
-  //   address: '',
-  //   ordertotal:''
-  // };
 
 
+
+
+  public paymentmode:string = 'Cash On Delivery';
+  date=new Date();
+  public orderdt:any;
 
   // form!: FormGroup;
 
@@ -44,7 +41,7 @@ export class PaymentComponent implements OnInit {
   // lname = "";
 
   constructor(private cartService:CartService,private router:Router,private userService:UserService,
-                private route: ActivatedRoute,private orderservice:OrderService) { }
+                private route: ActivatedRoute,private orderservice:OrderService,public datepipe: DatePipe) { }
 
   ngOnInit(): void {
 
@@ -75,70 +72,74 @@ export class PaymentComponent implements OnInit {
   }
 
     saveOrderItems(){
+      let latest_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
 
       console.log("Add",this.form.value.address);
 
 
       const data = {
 
+
         ordernumber: 11,
         uid: this.uid,
         address: this.form.value['address'],
-        ordertotal:this.grandTotal
+        ordertotal:this.grandTotal,
+        odate: latest_date
 
       };
 
       console.log(data);
       this.orderservice.create(data)
-          .subscribe(
-            response => {
-              console.log("Order added successfully");
-              console.log('UID:',this.uid)
-              console.log(response);
 
-              //this.submitted = true;
-            },
-            error => {
-              console.log(error);
-            });
-
-
-            this.products.map((prd:any)=>{
+      .subscribe(
+        response => {
+          console.log("Order added successfully");
+          console.log('UID:',this.uid)
+          console.log(response);
+          this.orderdt = response;
+          this.products.map((prd:any)=>{
             const oitem = {
-              oid: 1,
+              oid: this.orderdt.id,
               pid: prd.id,
               pname: prd.pname,
               pprice: prd.pprice,
               pquantity: prd.pquantity,
               ptotal: prd.itemtotal
-              }
-
-
-
-              this.orderservice.createItem(oitem)
-              .subscribe(
+            }
+            this.orderservice.createItem(oitem)
+            .subscribe(
               response => {
-              console.log(response);
-              alert("Order Item added sucess");
-              //this.submitted = true;
+                console.log(response);
+                //alert("Order added sucess");
+                //this.submitted = true;
               },
               error => {
-              console.log(error);
+                console.log(error);
               });
+            });
+            const payment = {
+              oid: this.orderdt.id,
+              uid: this.uid,
+              status: 'Completed',
+              paymentmode: this.paymentmode,
+              date: latest_date
+            }
 
-     // console.log(this.products);
-
-        //  this.pprice += a.product.pprice * a.product.pquantity;
-        // grandTotal+=a.product.pprice*q;
-        //  grandTotal+= a.itemtotal;
-
-
-
-
-
-    })
+            this.orderservice.createPayment(payment)
+            .subscribe(
+              response => {
+                console.log(response);
+                alert("Thank You for Shopping with Us");
+                //this.submitted = true;
+              },
+              error => {
+                console.log(error);
+              });
+        },
+        error => {
+          console.log(error);
+    });
   }
-
 
 
   get f(){
@@ -191,3 +192,5 @@ export class PaymentComponent implements OnInit {
 //         });
 // }
 }
+
+

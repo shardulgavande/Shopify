@@ -31,6 +31,7 @@ import { FilterPipe } from './shared/filter.pipe';
 import { CartService } from './service/cart.service';
 import { Router } from '@angular/router';
 
+import { DatePipe } from '@angular/common'
 
 
 
@@ -68,7 +69,7 @@ import { Router } from '@angular/router';
     ReactiveFormsModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {
