@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-
+import { Router } from '@angular/router';
 import { CartService } from 'src/app/service/cart.service';
 import { OrderService } from 'src/app/service/order.service';
-import { UserService } from 'src/app/service/user.service';
 import { DatePipe } from '@angular/common'
 import { IOrder } from '../IOrder';
 
@@ -15,53 +13,39 @@ import { IOrder } from '../IOrder';
 })
 export class PaymentComponent implements OnInit {
 
-  form!: FormGroup;
-
- public address = "";
-
   public products : any=[];
   public grandTotal !: number;
   totalItem: any;
   public uid:any;
-  public i :any=45654654;
-
-  user:any;
-
-
-
-
-
   public paymentmode:string = 'Cash On Delivery';
   date=new Date();
   public orderdt:any;
+  public ordernum :any=(Math.floor(100000 + Math.random() * 900000));
+  public edited : boolean = false;
 
-  // form!: FormGroup;
+  form!: FormGroup;
 
   // fname = "";
   // lname = "";
 
-  constructor(private cartService:CartService,private router:Router,private userService:UserService,
-                private route: ActivatedRoute,private orderservice:OrderService,public datepipe: DatePipe) { }
+  constructor(private cartService:CartService, private orderservice: OrderService, private router:Router,
+    public datepipe: DatePipe) { }
 
   ngOnInit(): void {
-
+    
     // this.form = new FormGroup({
     //   fname: new FormControl('', [Validators.required]),
     //   lname: new FormControl('', [Validators.required]),
     // });
     this.uid = sessionStorage.getItem('uid');
 
-
     this.form = new FormGroup({
-      address: new FormControl()
 
+      address: new FormControl()
     });
 
-
-    // this.getUser(this.route.snapshot.paramMap.get('id'));
-
-
     this.cartService.getProducts().subscribe(res=>{
+      this.edited = true;
       this.products = res;
       this.grandTotal= this.cartService.getTotalPrice();
     })
@@ -70,27 +54,19 @@ export class PaymentComponent implements OnInit {
       this.totalItem= res.length;
     })
   }
-
-    saveOrderItems(){
-      let latest_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
-
-      console.log("Add",this.form.value.address);
-
-
-      const data = {
-
-
-        ordernumber: 11,
-        uid: this.uid,
-        address: this.form.value['address'],
-        ordertotal:this.grandTotal,
-        odate: latest_date
-
-      };
-
-      console.log(data);
-      this.orderservice.create(data)
-
+  
+  saveOrderItems(){
+    let latest_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
+    const data = {
+      ordernumber: this.ordernum,
+      uid: this.uid,
+      address: this.form.value['address'],
+      ordertotal:this.grandTotal,
+      odate: latest_date
+    };
+   
+    this.orderservice.create(data)
+    
       .subscribe(
         response => {
           console.log("Order added successfully");
@@ -130,6 +106,7 @@ export class PaymentComponent implements OnInit {
               response => {
                 console.log(response);
                 alert("Thank You for Shopping with Us");
+                this.removecart();
                 //this.submitted = true;
               },
               error => {
@@ -141,56 +118,22 @@ export class PaymentComponent implements OnInit {
     });
   }
 
+  removecart(){
+    this.cartService.removeAllCart();
+    this.router.navigateByUrl('/home');
+  }
 
   get f(){
     return this.form.controls;
   }
+   
 
-
-//   logout(){
-//     localStorage.removeItem('token');
-//     this.cartService.removeAllCart();
-//     this.router.navigateByUrl('/login');
-
-
-
-// }
-
-// getUser(id:any):void{
-//   this.userService.find(id)
-//     .subscribe(
-//       data =>{
-//         this.user = data;
-//         console.log(data);
-//         console.log(id);
-//       },
-//       error => {
-//         console.log(error);
-//       });
-// }
-
-// insertOrder():void {
-//   const data = {
-
-//     ordernumber: 11,
-//     uid: this.uid,
-//     address: this.form.value,
-//     ordertotal:this.grandTotal
-
-//   };
-//   this.orderservice.create(data)
-//       .subscribe(
-//         response => {
-//           console.log("Order added successfully");
-//           console.log('UID:',this.uid)
-//           console.log(response);
-
-//           //this.submitted = true;
-//         },
-//         error => {
-//           console.log(error);
-//         });
-// }
+  logout(){
+    localStorage.removeItem('token');
+    this.cartService.removeAllCart();
+    this.router.navigateByUrl('/login');
+  // }
+  }
 }
 
 
