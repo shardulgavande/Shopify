@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   emailId = "";
   password = "";
+  public loginuser:any;
 
   btnDisabled = false;
 
@@ -33,14 +34,22 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  
+
   login(){
     this.userService.getUsers().subscribe(res => {
       const user=res.find((a:any)=> {
+        this.loginuser = a;
+        console.log(a);
         return a.emailId === this.form.value.emailId && a.password === this.form.value.password
       });
 
+
       if(user){
         alert("Login Success");
+        //console.log(this.loginuser);
+        sessionStorage.setItem('uid',this.loginuser.id);
+        sessionStorage.setItem('uname',this.loginuser.name);
         localStorage.setItem('token',"dfdfdtrtdry.drddhfdhdyrdt.drftftfytfy");
         this.form.reset;
         this.router.navigateByUrl('/home');

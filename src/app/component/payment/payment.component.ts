@@ -14,6 +14,7 @@ export class PaymentComponent implements OnInit {
   public products : any=[];
   public grandTotal !: number;
   totalItem: any;
+  public uid:any;
   // form!: FormGroup;
 
   // fname = "";
@@ -27,7 +28,7 @@ export class PaymentComponent implements OnInit {
     //   fname: new FormControl('', [Validators.required]),
     //   lname: new FormControl('', [Validators.required]),
     // });
-
+    this.uid = sessionStorage.getItem('uid');
 
     this.cartService.getProducts().subscribe(res=>{
       this.products = res;

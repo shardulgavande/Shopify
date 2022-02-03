@@ -11,6 +11,8 @@ import { UserService } from 'src/app/service/user.service';
 export class HomeheaderComponent implements OnInit {
 
   public totalItem:number=0;
+  public uname: any;
+  public uid:any;
 
   constructor(private router:Router,private userService:UserService,
     private cartService:CartService) { }
@@ -21,8 +23,9 @@ export class HomeheaderComponent implements OnInit {
       this.totalItem= res.length;
     })
 
-
-
+    
+    this.uname = sessionStorage.getItem('uname');
+    this.uid = sessionStorage.getItem('uid');
   }
 
   logout(){
