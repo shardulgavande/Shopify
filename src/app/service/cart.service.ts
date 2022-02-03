@@ -15,7 +15,7 @@ export class CartService {
   constructor() { }
 
   getProducts(){
-    console.log(this.productList.asObservable());
+    console.log(this.productList);
     return this.productList.asObservable();
   }
 

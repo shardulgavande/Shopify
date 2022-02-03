@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/service/cart.service';
+import { OrderService } from 'src/app/service/order.service';
 
 @Component({
   selector: 'app-payment',
@@ -18,7 +19,7 @@ export class PaymentComponent implements OnInit {
   // fname = "";
   // lname = "";
 
-  constructor(private cartService:CartService,private router:Router) { }
+  constructor(private cartService:CartService, private orderservice: OrderService, private router:Router) { }
 
   ngOnInit(): void {
 
@@ -37,6 +38,39 @@ export class PaymentComponent implements OnInit {
       this.totalItem= res.length;
     })
   }
+
+    saveOrderItems(){
+      console.log(this.products);
+      this.products.map((prd:any)=>{
+        const oitem = {
+          oid: 1,
+          pid: prd.id,
+          pname: prd.pname,
+          pprice: prd.pprice,
+          pquantity: prd.pquantity,
+          ptotal: prd.itemtotal
+        }
+
+        this.orderservice.createItem(oitem)
+      .subscribe(
+        response => {
+          console.log(response);
+          alert("Order added sucess");
+          //this.submitted = true;
+        },
+        error => {
+          console.log(error);
+        });
+
+        console.log('prd id ' + prd.id);
+        console.log(oitem);
+
+        //  this.pprice += a.product.pprice * a.product.pquantity;
+        // grandTotal+=a.product.pprice*q;
+        //  grandTotal+= a.itemtotal;
+        });
+    }
+
 
   // get f(){
   //   return this.form.controls;

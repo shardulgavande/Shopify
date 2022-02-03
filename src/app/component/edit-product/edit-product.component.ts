@@ -56,8 +56,9 @@ export class EditProductComponent implements OnInit {
       pdesc: this.product.pdesc,
       pimage: this.product.pimage,
       pquantity: this.product.pquantity,
-      subcat_id: 1
+      subcat_id: 1,
     };
+
     this.productService.update(this.product.id, data)
     .subscribe(
       response => {

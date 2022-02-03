@@ -1,7 +1,7 @@
 const { response } = require('express');
 //const { account } = require('pg/lib/defaults');
 const db = require('../db/models');
-const Products = db.Product;
+const Products = db.Products;
 
 exports.findAll=(req,resp)=>{
     Products.findAll()
