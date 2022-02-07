@@ -20,7 +20,8 @@ export class PaymentComponent implements OnInit {
   public paymentmode:string = 'Cash On Delivery';
   date=new Date();
   public orderdt:any;
-  public ordernum :any=(Math.floor(100000 + Math.random() * 900000));
+  public ordernum:any;
+  //public ordernum :any=(Math.floor(100000 + Math.random() * 900000));
   public edited : boolean = false;
 
   form!: FormGroup;
@@ -52,6 +53,9 @@ export class PaymentComponent implements OnInit {
 
     this.cartService.getProducts().subscribe(res=>{
       this.totalItem= res.length;
+      if (this.totalItem > 0) {
+        this.ordernum =(Math.floor(100000 + Math.random() * 900000));
+      }
     })
   }
   
