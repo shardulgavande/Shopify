@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  
+
 
   login(){
     this.userService.getUsers().subscribe(res => {
@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('uid',this.loginuser.id);
         sessionStorage.setItem('uname',this.loginuser.name);
         localStorage.setItem('token',"dfdfdtrtdry.drddhfdhdyrdt.drftftfytfy");
+        console.log("User",user);
         this.form.reset;
         this.router.navigateByUrl('/home');
       }else{
