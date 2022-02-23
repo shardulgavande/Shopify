@@ -26,8 +26,10 @@ export class CartService {
     this.productList.next(product);
   }
 
-  addtoCart(product:any,pquantity:number){
+  addtoCart(product:any,pquantity:any){
     //const _product={product:product,quantity:pquantity};
+    // console.log(pquantity);
+    
     product.pquantity = pquantity;
     product.itemtotal = product.pprice * product.pquantity;
     this.cartItemList.push(product);
