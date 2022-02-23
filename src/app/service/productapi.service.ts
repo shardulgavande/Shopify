@@ -7,7 +7,7 @@ import { IProducts } from '../IProducts';
   providedIn: 'root'
 })
 export class ProductapiService {
-  private base_url = "http://localhost:3000";
+  private base_url = "http://localhost:53176";
   http_option = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -17,7 +17,7 @@ export class ProductapiService {
     return this.httpClient.get<IProducts[]>(this.base_url+"/app/products");
   } */
   getProducts():Observable<any>{
-    return this.httpClient.get(this.base_url+"/app/products");
+    return this.httpClient.get(this.base_url+"/api/products");
   }
 
   /*create(data:IProducts): Observable<IProducts>{
