@@ -12,10 +12,10 @@ export class AddProductComponent implements OnInit {
 
   product = {
     pname: '',
-    pprice: 1,
+    pprice: '',
     pdesc: '',
     pimage: '',
-    pquantity: 1,
+    pquantity: '',
     subcat_id: 1
   }; 
   //submitted = false;
@@ -56,7 +56,7 @@ export class AddProductComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
-          alert("Data added sucess");
+          alert("Data added success");
           //this.submitted = true;
         },
         error => {

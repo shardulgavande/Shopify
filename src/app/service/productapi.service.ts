@@ -24,15 +24,15 @@ export class ProductapiService {
       return this.httpClient.post<IProducts>(this.base_url+"/app/products/add",data,this.http_option);
   } */
   create(data:any):Observable<any>{
-    return this.httpClient.post(this.base_url+"/app/products/add",data,this.http_option);
+    return this.httpClient.post(this.base_url+"/api/products",data,this.http_option);
   }
 
   get(id:number): Observable<any> {
-    return this.httpClient.get(`${this.base_url+"/app/products/"}${id}`);
+    return this.httpClient.get(this.base_url+"/api/products/"+id);
   }
 
-  update(id:number,data:any):Observable<any>{
-    return this.httpClient.put(`${this.base_url+"/app/products/update/"}${id}`,data);
+  update(data:any):Observable<any>{
+    return this.httpClient.put(this.base_url+"/api/products/",data);
   }
 
   delete(id:number):Observable<any>{

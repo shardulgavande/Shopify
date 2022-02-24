@@ -37,6 +37,7 @@ export class EditProductComponent implements OnInit {
 
 
   getProducts(id:any):void{
+    console.log(id);
     this.productService.get(id)
       .subscribe(
         data =>{
@@ -59,7 +60,7 @@ export class EditProductComponent implements OnInit {
       subcat_id: 1,
     };
 
-    this.productService.update(this.product.id, data)
+    this.productService.update(data)
     .subscribe(
       response => {
         console.log(response);
