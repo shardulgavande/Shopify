@@ -36,6 +36,7 @@ export class ProductapiService {
   }
 
   delete(id:number):Observable<any>{
-    return this.httpClient.delete(`${this.base_url+"/app/products/delete/"}${id}`);
+    return this.httpClient.delete(this.base_url+"/api/products/"+id);
+    //return this.httpClient.delete(`${this.base_url+"/api/products/"}${id}`);
   }
 }

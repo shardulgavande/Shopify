@@ -30,9 +30,10 @@ import { AddCategorytypeComponent } from './component/add-categorytype/add-categ
 import { FilterPipe } from './shared/filter.pipe';
 import { CartService } from './service/cart.service';
 import { Router } from '@angular/router';
-
 import { DatePipe } from '@angular/common'
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {Ng2OrderModule} from 'ng2-order-pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -66,6 +67,9 @@ import { DatePipe } from '@angular/common'
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    Ng2OrderModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
   ],
