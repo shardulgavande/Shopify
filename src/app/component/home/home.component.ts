@@ -17,7 +17,9 @@ export class HomeComponent implements OnInit {
  // quantity:any;
 
  // qid = (<HTMLInputElement>document.getElementById("quantity")).value;
-  products : any=[];
+  products : any=[];  
+  pname:any;
+  p: number = 1; 
   // products:any;
   public productList: any;
   public totalItem:number=0;
@@ -62,6 +64,17 @@ export class HomeComponent implements OnInit {
    // qid = ((document.getElementById("{{'quantity' + product.id}}") as HTMLInputElement).value);
     this.cartService.addtoCart(product,qid);
     console.log(qid);
+  }
+
+  Search(){
+    if(this.pname == ""){
+      this.ngOnInit();
+    }
+    else{
+      this.products = this.products.filter(res =>{
+        return res.pname.toLocaleLowerCase().match(this.pname.toLocaleLowerCase());
+      });
+    }
   }
 
   // logout(){
