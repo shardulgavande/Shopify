@@ -37,12 +37,12 @@ export class AdminLoginComponent implements OnInit {
     //     });
   }
   login(){
-    this.adminService.getAdmins().subscribe(res => {
-      const user=res.find((a:any)=> {
-        return a.emailId === this.form.value.emailId && a.password === this.form.value.password
-      });
+   const user= this.adminService.login(this.form.value).subscribe(res => {
+      // const user=res.find((a:any)=> {
+      //   return a.emailId === this.form.value.emailId && a.password === this.form.value.password
+      // });
 
-      if(user){
+      if(user!=null){
         alert("Login Success");
         localStorage.setItem('token',"dfdfdtrtdry.drddhfdhdyrdt.drftftfytfy");
         this.form.reset;
@@ -51,7 +51,7 @@ export class AdminLoginComponent implements OnInit {
         alert("Invalid credentials");
       }
     },err=>{
-      alert("Something went wrong!!");
+      alert("Invalid Credentials!!");
     })
   }
 }

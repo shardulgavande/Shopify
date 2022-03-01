@@ -9,9 +9,10 @@ import { IAdmin } from '../IAdmin';
 export class AdminService {
 
   //http://localhost:3000/admins/
- private admin_urls = "http://localhost:3000/app/admins";
+ private admin_urls = "http://localhost:53176/api/admin";
+ private admin_login = "http://localhost:53176/api/admin/login";
  private admin_find = "http://localhost:3000/app/admins";
- private admin_add = "http://localhost:3000/app/admins/add";
+ private admin_add = "http://localhost:53176/api/admin";
  private admin_update = "http://localhost:3000/app/admins/update/";
  private admin_delete = "http://localhost:3000/app/admins/delete/";
 
@@ -33,6 +34,10 @@ find(id:number): Observable<IAdmin> {
 
 create(admins: any): Observable<IAdmin> {
  return this.httpclient.post<IAdmin>(this.admin_add, JSON.stringify(admins), this.httpOptions);
+}
+
+login(admins:any): Observable <IAdmin>{
+  return this.httpclient.post<IAdmin>(this.admin_login, JSON.stringify(admins), this.httpOptions);
 }
 
 

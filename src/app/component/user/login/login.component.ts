@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   public loginuser:any;
 
   btnDisabled = false;
+  user1: any;
 
   constructor(private formbuilder:FormBuilder,
     private router:Router,public userService: UserService,private http: HttpClient
@@ -37,28 +38,39 @@ export class LoginComponent implements OnInit {
 
 
   login(){
-    this.userService.getUsers().subscribe(res => {
-      const user=res.find((a:any)=> {
-        this.loginuser = a;
-        console.log(a);
-        return a.emailId === this.form.value.emailId && a.password === this.form.value.password
-      });
+    // this.userService.getUsers().subscribe(res => {
+    //   const user=res.find((a:any)=> {
+    //     this.loginuser = a;
+    //     console.log(a);
+    //     return a.emailId === this.form.value.emailId && a.password === this.form.value.password
+    //   });
 
+    console.log("Inside Login");
 
-      if(user){
+    const user=this.userService.login(this.form.value).subscribe(res => {
+      // const user=res.find((a:any)=> {
+      //   this.loginuser = a;
+      //   console.log(a);
+      //   return a.emailId === this.form.value.emailId && a.password === this.form.value.password
+      // });
+
+      this.user1=user;
+      console.log("User",this.user1);
+      if(user!=null){
         alert("Login Success");
-        //console.log(this.loginuser);
-        sessionStorage.setItem('uid',this.loginuser.id);
-        sessionStorage.setItem('uname',this.loginuser.name);
+        console.log("User",this.user1);
+        // console.log(this.loginuser);
+        // sessionStorage.setItem('uid',this.loginuser.id);
+        // sessionStorage.setItem('uname',this.loginuser.name);
         localStorage.setItem('token',"dfdfdtrtdry.drddhfdhdyrdt.drftftfytfy");
-        console.log("User",user);
+        // console.log("User",user);
         this.form.reset;
         this.router.navigateByUrl('/home');
       }else{
         alert("Invalid credentials");
       }
     },err=>{
-      alert("Something went wrong!!");
+      alert("Invalid Credentials!!");
     })
   }
 
