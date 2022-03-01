@@ -6,6 +6,7 @@ import { OrderService } from 'src/app/service/order.service';
 import { DatePipe } from '@angular/common'
 import { IOrder } from '../IOrder';
 
+
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -21,6 +22,7 @@ export class PaymentComponent implements OnInit {
   date=new Date();
   public orderdt:any;
   public ordernum:any;
+
   //public ordernum :any=(Math.floor(100000 + Math.random() * 900000));
   public edited : boolean = false;
 
@@ -51,14 +53,37 @@ export class PaymentComponent implements OnInit {
       this.grandTotal= this.cartService.getTotalPrice();
     })
 
+    
     this.cartService.getProducts().subscribe(res=>{
       this.totalItem= res.length;
       if (this.totalItem > 0) {
         this.ordernum =(Math.floor(100000 + Math.random() * 900000));
       }
+     
     })
   }
   
+  applycoupon(coupon:any){
+    console.log(coupon);
+    
+    if(coupon == "shopify20") {
+      if(this.grandTotal > 1000) {
+        this.grandTotal= this.cartService.getTotalPrice();  
+        console.log(this.grandTotal);
+        //this.grandTotal * 0.2;
+        var discount = Math.round(this.grandTotal * 0.2);
+        this.grandTotal = this.grandTotal - discount;
+        console.log(this.grandTotal * 0.2);
+      }
+      else {
+        alert("Coupon can be applied only above ₹1000");
+      }
+    }
+    else {
+      alert("Please enter valid coupon code");
+    }
+  }
+
   saveOrderItems(){
     let latest_date =this.datepipe.transform(this.date, 'yyyy-MM-dd');
     const data = {
@@ -70,13 +95,13 @@ export class PaymentComponent implements OnInit {
     };
    
     this.orderservice.create(data)
-    
       .subscribe(
-        response => {
+        resp => {
+          console.log(resp);
           console.log("Order added successfully");
           console.log('UID:',this.uid)
-          console.log(response);
-          this.orderdt = response;
+          
+          this.orderdt = resp;
           this.products.map((prd:any)=>{
             const oitem = {
               oid: this.orderdt.id,

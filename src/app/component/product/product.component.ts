@@ -11,7 +11,8 @@ import { ProductapiService } from 'src/app/service/productapi.service';
 export class ProductComponent implements OnInit {
 
   products :any=[];
-
+  p: number = 1; 
+  pname:any;
   // products:any;
   public productList: any;
   router: any;
@@ -39,6 +40,17 @@ export class ProductComponent implements OnInit {
   //   this.cartService.addtoCart(product);
 
   // }
+
+  Search(){
+    if(this.pname == ""){
+      this.ngOnInit();
+    }
+    else{
+      this.products = this.products.filter(res =>{
+        return res.pname.toLocaleLowerCase().match(this.pname.toLocaleLowerCase());
+      });
+    }
+  }
 
   prod(){
 

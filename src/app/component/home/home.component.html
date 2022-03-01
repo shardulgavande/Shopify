@@ -1,4 +1,10 @@
 <app-homeheader></app-homeheader>
+<div class="search" style="text-align: center;display: block;margin-left: 32%;">
+  <nav class="navbar">
+    <input type="text" style="width: 50%;" class="form-control me-2" name="pname" [(ngModel)]="pname" (ngModelChange)="Search()"
+    placeholder="Enter Product Name to Search">
+</nav>
+</div>
 <div class="container" style="padding-top: 30px;">
   <div class="row">
       <ng-container *ngFor="let product of products  ; let i = index">
