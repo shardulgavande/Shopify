@@ -106,10 +106,15 @@
           </dl>
           <hr>
 
+          <div style="padding-right: 50px;">
+          <input type="text" id ="coupon" name="coupon" #coupon class="form-control" placeholder="Enter Coupon Code" required />
+          <button type="button" class="btn btn-primary btn-sm" style="margin-left: 0px; margin-top: 10px;" (click)="applycoupon(coupon.value)">Apply Coupon</button><br>
+         </div> 
+          
+          <div class="placeorder" style="padding-top: 5px;">
           <input type="checkbox" value="By clicking you are agree with terms of condition" name="" id="">&nbsp;&nbsp;
-
           <p class="small mb-3 text-muted" style="display: inline-block;">By clicking you are agree with <a href="#">terms of condition</a></p><br>
-
+         </div>
           <button class="btn btn-primary btn-block" (click)="saveOrderItems()" [disabled]="!form.valid"> Place Order  </button>
 
       </div> <!-- card-body.// -->
