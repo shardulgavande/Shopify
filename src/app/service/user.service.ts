@@ -9,10 +9,11 @@ import { IUser } from '../IUser';
 export class UserService {
 
  //http://localhost:3000/users/
- private user_urls = "http://localhost:3000/app/users";
+ private user_urls = "http://localhost:53176/api/user";
+ private user_login = "http://localhost:53176/api/user/login";
  private user_find = "http://localhost:3000/app/users";
 //  private user_reg = "http://localhost:3000/app/users/reg";
- private user_add = "http://localhost:3000/app/users/add";
+ private user_add = "http://localhost:53176/api/user";
 //  private user_update = "http://localhost:3000/app/users/update/";
  private user_update = "http://localhost:3000";
  private user_delete = "http://localhost:3000/app/users/delete/";
@@ -37,6 +38,10 @@ export class UserService {
  create(users: any): Observable<IUser> {
   return this.httpclient.post<IUser>(this.user_add, JSON.stringify(users), this.httpOptions);
 }
+
+ login(users:any): Observable <IUser>{
+   return this.httpclient.post<IUser>(this.user_login, JSON.stringify(users), this.httpOptions);
+ }
 
 
 // update(id:number, users: any): Observable<IUser> {
