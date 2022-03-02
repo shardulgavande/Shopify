@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CategorytypeService {
 
-  private base_url = "http://localhost:3000";
+  private base_url = "http://localhost:53176";
   http_option = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -15,14 +15,14 @@ export class CategorytypeService {
   constructor(private httpClient:HttpClient) { }
 
 getCategoryTypes():Observable<any>{
-    return this.httpClient.get(this.base_url+"/app/categorytypes");
+    return this.httpClient.get(this.base_url+"/api/categorytype");
   }
 
   /*create(data:IProducts): Observable<IProducts>{
       return this.httpClient.post<IProducts>(this.base_url+"/app/products/add",data,this.http_option);
   } */
   create(data:any):Observable<any>{
-    return this.httpClient.post(this.base_url+"/app/categorytypes/add",data,this.http_option);
+    return this.httpClient.post(this.base_url+"/api/categorytype",data,this.http_option);
   }
 
   get(id:number): Observable<any> {
