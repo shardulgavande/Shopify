@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/service/cart.service';
@@ -22,7 +22,8 @@ export class PaymentComponent implements OnInit {
   date=new Date();
   public orderdt:any;
   public ordernum:any;
-
+  public coupon: any;
+  @ViewChild('coupon') inputName;
   //public ordernum :any=(Math.floor(100000 + Math.random() * 900000));
   public edited : boolean = false;
 
@@ -156,6 +157,11 @@ export class PaymentComponent implements OnInit {
     return this.form.controls;
   }
    
+  clearsearch(){
+    this.inputName.nativeElement.value = ' ';
+    this.grandTotal= this.cartService.getTotalPrice();
+    
+  }
 
   logout(){
     localStorage.removeItem('token');
