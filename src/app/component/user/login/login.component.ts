@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       //  console.log(a);
 
       // return a.emailId === this.form.value.emailId && a.password === this.form.value.password
-      
+
 
     console.log("Inside Login");
 
@@ -64,9 +64,12 @@ export class LoginComponent implements OnInit {
       if(user!=null){
         alert("Login Success");
         console.log("User",this.loginuser);
+
         // console.log(this.loginuser);
-         sessionStorage.setItem('uid',this.loginuser.uid);
+        sessionStorage.setItem('uid',this.loginuser.uid);
          sessionStorage.setItem('uname',this.loginuser.uname);
+         sessionStorage.setItem('emailid',this.loginuser.emailid);
+         console.log("email",this.loginuser.emailid);
         localStorage.setItem('token',"dfdfdtrtdry.drddhfdhdyrdt.drftftfytfy");
         // console.log("User",user);
         this.form.reset;

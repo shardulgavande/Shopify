@@ -15,7 +15,7 @@ export class UserService {
 //  private user_reg = "http://localhost:3000/app/users/reg";
  private user_add = "http://localhost:53176/api/user";
 //  private user_update = "http://localhost:3000/app/users/update/";
- private user_update = "http://localhost:3000";
+ private user_update = "http://localhost:53176/api/user";
  private user_delete = "http://localhost:3000/app/users/delete/";
 
  httpOptions = {
@@ -48,9 +48,13 @@ export class UserService {
 //   return this.httpclient.put<IUser>(this.user_update + id, JSON.stringify(users), this.httpOptions)
 // }
 
-update(id:number,data:any):Observable<any>{
-  return this.httpclient.put<IUser>(`${this.user_update+"/app/users/update/"}${id}`,data);
+update(data:any):Observable<any>{
+  return this.httpclient.put<IUser>(this.user_update,data);
 }
+
+// update(id:number,data:any):Observable<any>{
+//   return this.httpclient.put<IUser>(`${this.user_update}${id}`,data);
+// }
 
 delete(id:number){
   return this.httpclient.delete<IUser>(this.user_delete + id, this.httpOptions)

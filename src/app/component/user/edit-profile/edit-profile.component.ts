@@ -17,13 +17,16 @@ export class EditProfileComponent implements OnInit {
   id:any;
   uid: any;
   product:any;
+  public emailid:any;
   constructor(private formBuilder: FormBuilder,private route: ActivatedRoute,
    private router: Router, private userService:UserService ) { }
 
   ngOnInit(): void {
 
     this.uid = sessionStorage.getItem('uid');
+    this.emailid = sessionStorage.getItem('emailid');
     console.log("Uid "+this.uid);
+    console.log("EmailId",this.emailid);
 
 
     // password not required in edit mode
@@ -84,27 +87,33 @@ getProducts(uid:any):void{
 
 submit() {
 
-  this.userService.find(this.uid)
-    .subscribe(
-      data =>{
-        this.product = data;
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      });
+  // this.userService.find(this.uid)
+  //   .subscribe(
+  //     data =>{
+  //       this.product = data;
+  //       console.log(data);
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     });
 
       const data = {
         id: this.uid,
         name: this.form.value['name'],
         mobileNo: this.form.value['mobileNo'],
+        emailId:this.emailid,
         password: this.form.value['password'],
 
-      };
-  this.userService.update(this.uid, data).subscribe((res:any) => {
 
+      };
+
+      console.log("EmailId",this.emailid);
+  this.userService.update(data).subscribe((res:any) => {
+
+    console.log("Res",res);
     alert('User Details updated successfully!');
     console.log(this.form.value);
+    console.log("EmailId",this.emailid);
 
     this.router.navigateByUrl('/home');
 
