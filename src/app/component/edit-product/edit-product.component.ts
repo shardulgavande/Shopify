@@ -65,6 +65,10 @@ export class EditProductComponent implements OnInit {
       response => {
         console.log(response);
         alert("Data updated sucessfully");
+          this.router.navigate(['/dashboard/products/list'])
+            .then(() => {
+            window.location.reload();
+          });
         //this.submitted = true;
       },
       error => {

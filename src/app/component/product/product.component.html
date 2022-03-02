@@ -19,6 +19,9 @@
     placeholder="Enter Product Name to Search">
 </nav>
 </div>
+<marquee direction="left" speed="slow" behavior="loop">
+    Use coupon code "shopify20" to get 20% OFF on orders above ₹1000            
+    </marquee>
 <div class="banner">
     <div class="container">
         <div class="row">
@@ -35,9 +38,9 @@
     <ng-container *ngFor="let product of products  ; let i = index">
     <div class="col-md-3">
         <img src="{{product.pimage}}" alt="" style="width: 270px; height: 350px;">
-        <h5 style="text-align: center;">{{product.pname}}</h5>
+        <h5 style="text-align: center; font-size:15px; font-weight: 550;">{{product.pname}}</h5>
         <div style="display: flex;">
-          <p>₹{{product.pprice}}</p><span style="margin-left: 100px;">Quantity: {{product.pquantity}}</span>
+          <p style="font-weight: 550;">₹{{product.pprice}}</p><span style="margin-left: 100px; font-weight: 550;">Quantity: {{product.pquantity}}</span>
         </div>
         <div style="display: flex;">
         <button class="btn btn-primary" (click)=prod() routerLink="/login">Add to Cart</button>

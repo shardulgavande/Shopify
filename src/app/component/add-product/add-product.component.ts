@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductapiService } from 'src/app/service/productapi.service';
+import { ActivatedRoute, Router } from '@angular/router';
 //import { IProducts } from 'src/app/IProducts';
 
 
@@ -20,7 +21,9 @@ export class AddProductComponent implements OnInit {
   }; 
   //submitted = false;
 
-  constructor(private productService:ProductapiService) { }
+  constructor(private productService:ProductapiService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -57,6 +60,10 @@ export class AddProductComponent implements OnInit {
         response => {
           console.log(response);
           alert("Data added success");
+          this.router.navigate(['/dashboard/products/list'])
+            .then(() => {
+            window.location.reload();
+          });
           //this.submitted = true;
         },
         error => {
