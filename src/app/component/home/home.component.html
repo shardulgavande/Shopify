@@ -1,15 +1,15 @@
 <app-homeheader></app-homeheader>
 <div class="search" style="text-align: center;display: block;margin-left: 32%;">
   <nav class="navbar">
-    <input type="text" style="width: 50%;" class="form-control me-2" name="pname" [(ngModel)]="pname" (ngModelChange)="Search()"
+    <input class="form-control" type="text" style="width:50%"  name="pname" [(ngModel)]="pname" (ngModelChange)="Search()"
     placeholder="Enter Product Name to Search">
 </nav>
 </div>
 <div class="container" style="padding-top: 30px;">
-  <div class="row">
-      <ng-container *ngFor="let product of products  ; let i = index">
-      <div class="col-md-3">
-          <img src="{{product.pimage}}" alt="" style="width: 270px; height: 350px;">
+  <div class="row" style="padding-top: 30px;">
+      <ng-container *ngFor="let product of products  ; let i = index" style="padding-top: 30px;">
+      <div class="col-md-3" style="padding-top: 30px;">
+          <img src="{{product.pimage}}" alt="" style="width: 220px; height: 280px;">
           <h5 style="text-align: center;">{{product.pname}}</h5>
           <div style="display: flex;">
             <p>₹{{product.pprice}}</p><span style="margin-left: 100px;">Quantity: {{product.pquantity}}</span>

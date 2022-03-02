@@ -23,7 +23,9 @@
   .card{
       height: 60vh;
       margin:25px;
-      padding:25px
+      padding:25px;
+      border-color:black;
+
   }
 
   .center{
@@ -46,4 +48,13 @@
 
 h4,h6 {
     font-weight: 400;
+}
+
+table{
+
+  text-align: center;
+}
+thead{
+  text-align: center;
+  align-content: center;
 }
