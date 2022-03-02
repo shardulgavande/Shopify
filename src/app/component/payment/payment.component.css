@@ -2,3 +2,18 @@
   border-width: 5px;
   border-color: black;
 }
+
+.container {
+
+  display: inline-block;
+}
+
+table{
+
+  text-align: center;
+}
+
+thead{
+  text-align: center;
+  align-content: center;
+}

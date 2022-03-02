@@ -26,6 +26,7 @@ export class HomeheaderComponent implements OnInit {
 
     this.uname = sessionStorage.getItem('uname');
     this.uid = sessionStorage.getItem('uid');
+    console.log("Uname",this.uname);
   }
 
   // search(event:any){
